@@ -44,10 +44,12 @@ io.on("connection",(socket) => {
     
     socket.on("sendMessagesToEveryone",(message)=> {
         const messageObject = {
-            id: Date.now(),
-            userName: message.userName,
-            avatar: message.avatar,
-            timeSent: Date.now(),
+            userObject:message.userObject,
+            messageId: Date.now(),
+            timeSent: new Date(Date.now()).toLocaleTimeString('en-US',{
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false}),
             content:message.userMsg
         }
         // messagesHistory = [...messagesHistory,messageObject];

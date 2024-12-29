@@ -197,20 +197,34 @@ ul, li {
   border-radius: 10px;
   padding: 5px;
 }
+.message p p{
+  color: rgb(124, 171, 89);
+  font-size: small;
+  box-sizing: border-box;
+  margin: auto ;
+}
 
 .sent {
     flex-direction: row-reverse;
 }
-
 .sent p {
   color: white;
   background: #5DB996;
   align-self: flex-end;
 }
+.sent p p{
+  text-align: right;
+}
+
 .received p {
   background: #E3F0AF;
   color: black;
 }
+.received p p{
+  text-align: left;
+}
+
+
 
 /* tag style */
 img {

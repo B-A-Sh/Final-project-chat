@@ -24,7 +24,7 @@ const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg}) => {
                 <main>
                     <div id='messagesBoard'>
                         {messages && messages.map(m =>(
-                            <div className='' key={m.id}>
+                            <div key={m.messageId}>
                                 <ChatMessage messageObject={m} ></ChatMessage>
                                 <br />
                             </div>

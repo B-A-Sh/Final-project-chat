@@ -36,7 +36,7 @@ const HomePage = () => {
     const sendMessagesToEveryone = () =>{
         if(userMsg){
             const message = {
-                userMsg,userName,avatar
+                userObject,userMsg
             }
             socket.emit("sendMessagesToEveryone",message)
             setUserMsg("")
