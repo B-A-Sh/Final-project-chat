@@ -2,9 +2,7 @@
 import React, { useState } from 'react'
 // import './style.css'
 import './finalStyle.css'
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import chatMessage from '../chat components/chatMessage.jsx';
 import ChatMessage from '../chat components/chatMessage.jsx';
 
 
@@ -29,8 +27,8 @@ const sendMessage = (event) =>{
                     <title className=''>chat title</title>
                     <div id='messagesBoard'>
                         {messages && messages.map(m =>(
-                            <div className=' chatApp__convMessageItem' key={m.id}>
-                                <ChatMessage messageObject={m} ></ChatMessage>
+                            <div className='' key={m.id}>
+                                <ChatMessage className='message sent' messageObject={m} ></ChatMessage>
                                 <img src={m.avatar} alt="avatar" className='chatApp__convMessageAvatar' />    
                                 <Card  className='' border="primary" style={{ width: '16rem' }}>
                                     <Card.Header className='chatApp__convMessageValue'>{m.userName} </Card.Header>
