@@ -197,8 +197,7 @@ ul, li {
   border-radius: 10px;
   padding: 5px;
 }
-.message p p{
-  color: rgb(124, 171, 89);
+.message p .messageTimeStamp{
   font-size: small;
   box-sizing: border-box;
   margin: auto ;
@@ -212,16 +211,18 @@ ul, li {
   background: #5DB996;
   align-self: flex-end;
 }
-.sent p p{
+.sent p .messageTimeStamp{
   text-align: right;
+  color: #E3F0AF;
 }
 
 .received p {
   background: #E3F0AF;
   color: black;
 }
-.received p p{
+.received p .messageTimeStamp{
   text-align: left;
+  color: #5DB996;
 }
 
 

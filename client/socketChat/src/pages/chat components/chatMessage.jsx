@@ -8,11 +8,16 @@ const chatMessage = ({messageObject}) => {
     return (
         
     <>
-        {/* <div className={`message sent chat-bubble-left`}> */}
-        <div className={`message received chat-bubble-left`}>
+        <div className={`message received`}>
             <img src={messageObject.userObject.userAvatar} alt="avatar" className='' />    
             <p>{messageObject.content}
-                <p className='mmessageTimeStamp'>{messageObject.timeSent || "Time not available"}</p>
+                <div className='messageTimeStamp'>{messageObject.timeSent || "Time not available"}</div>
+            </p>
+        </div>
+        <div className={`message sent`}>
+            <img src={messageObject.userObject.userAvatar} alt="avatar" className='' />    
+            <p>{messageObject.content}
+                <div className='messageTimeStamp'>{messageObject.timeSent || "Time not available"}</div>
             </p>
         </div>
     </>)

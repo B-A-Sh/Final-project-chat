@@ -5,18 +5,16 @@ import './finalStyle.css'
 import ChatMessage from '../chat components/chatMessage.jsx';
 
 
-
-const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg}) => {
+const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg,userObject}) => {
 	// const [messages, setMessages] = useState(props.messages)
 
-    const [userId, setuserId] = useState(Date.now())
     const sendMessage = (event) =>{
         event.preventDefault();
         // alert(`Form submitted with:`);
         sendMessagesToEveryone();
     }
     return (
-        <div className='chatbox bborder-bold mmessage-board'>
+        <div className='chatbox'>
             <header>
                 <h1>start of chat box</h1>
             </header>
@@ -25,7 +23,9 @@ const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg}) => {
                     <div id='messagesBoard'>
                         {messages && messages.map(m =>(
                             <div key={m.messageId}>
-                                <ChatMessage messageObject={m} ></ChatMessage>
+                                <ChatMessage  
+                                className={m.userObject.id==userObject.id ? 'sent' : 'received'}
+                                messageObject={m} ></ChatMessage>
                                 <br />
                             </div>
                         ))}
@@ -51,10 +51,3 @@ const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg}) => {
 }
 
 export default Chatbox
-
-	// <section id="chatApp" className="chatApp">
-	// <div className="chatApp__loaderWrapper">
-	// 	<div className="chatApp__loaderText">Loading...</div>
-	// 	<div className="chatApp__loader"></div>
-	// </div>
-	// </section>

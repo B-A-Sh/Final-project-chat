@@ -35,13 +35,9 @@ const HomePage = () => {
     
     const sendMessagesToEveryone = () =>{
         if(userMsg){
-            const message = {
-                userObject,userMsg
-            }
+            const message = {userObject,userMsg}
             socket.emit("sendMessagesToEveryone",message)
             setUserMsg("")
-            console.log(messages);
-            
         }
     }
 
@@ -52,7 +48,6 @@ const HomePage = () => {
                     setUserMsg={setUserMsg}
                     userMsg={userMsg}
                     userObject={userObject}>
-
             </Chatbox>
         </>
   )
