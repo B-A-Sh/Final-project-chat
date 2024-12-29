@@ -24,18 +24,17 @@ const sendMessage = (event) =>{
 
             <section>
                 <main>
-                    <title className=''>chat title</title>
                     <div id='messagesBoard'>
                         {messages && messages.map(m =>(
                             <div className='' key={m.id}>
-                                <ChatMessage className='message sent' messageObject={m} ></ChatMessage>
-                                <img src={m.avatar} alt="avatar" className='chatApp__convMessageAvatar' />    
+                                <ChatMessage messageObject={m} ></ChatMessage>
+                                {/* <img src={m.avatar} alt="avatar" className='' />    
                                 <Card  className='' border="primary" style={{ width: '16rem' }}>
                                     <Card.Header className='chatApp__convMessageValue'>{m.userName} </Card.Header>
                                     <Card.Text className=''>
                                         {m.content}
                                     </Card.Text>
-                                </Card>
+                                </Card> */}
                                 <br />
                             </div>
                         ))}
@@ -59,9 +58,6 @@ const sendMessage = (event) =>{
 
 
         </div>
-
-
-
 
 
 )}

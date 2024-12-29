@@ -85,7 +85,7 @@ main {
   margin: 10vh 0 10vh;
   overflow-y: scroll;
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
 }
 
 main::-webkit-scrollbar {
@@ -193,7 +193,6 @@ ul, li {
   display: flex;
   align-items: center;
 }
-
 
 .sent {
     flex-direction: row-reverse;
