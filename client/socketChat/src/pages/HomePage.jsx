@@ -8,7 +8,14 @@ const HomePage = () => {
     const [userMsg, setUserMsg] = useState('');
     const [avatar, setAvatar] = useState('../src/assets/men logo.png')
     const [userName, setuserName] = useState("Bar amos")
-    const [otherName, setotherName] = useState("Adele")
+    // const [otherName, setotherName] = useState("Adele")
+    const [userObject, setuserObject] = useState(
+      {id : Date.now(),
+      userName:"Bar-amos",
+      userAvatar: '../src/assets/men logo.png',
+      email:'boby@gmail.com',
+      isFemale:'false'
+    })
 
 
     // socket.emit("getMessageHistory")
@@ -40,14 +47,13 @@ const HomePage = () => {
 
     return (
         <>
-            
            <Chatbox messages={messages} 
                     sendMessagesToEveryone={sendMessagesToEveryone}
                     setUserMsg={setUserMsg}
-                    userMsg={userMsg}>
+                    userMsg={userMsg}
+                    userObject={userObject}>
 
             </Chatbox>
-
         </>
   )
 }

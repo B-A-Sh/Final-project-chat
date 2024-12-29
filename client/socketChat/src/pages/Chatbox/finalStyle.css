@@ -193,18 +193,22 @@ ul, li {
   display: flex;
   align-items: center;
 }
+.message p{
+  border-radius: 10px;
+  padding: 5px;
+}
 
 .sent {
     flex-direction: row-reverse;
 }
 
 .sent p {
-    color: white;
-    background: #0b93f6;
+  color: white;
+  background: #5DB996;
   align-self: flex-end;
 }
 .received p {
-  background: #e5e5ea;
+  background: #E3F0AF;
   color: black;
 }
 
