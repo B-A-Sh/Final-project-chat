@@ -1,24 +1,23 @@
 import React from 'react'
 import './chatMessage.css'
 
-const chatMessage = ({messageObject}) => {
+const chatMessage = ({messageObject,testFlag,className}) => {
     // const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
     // <div className={`message ${messageClass}`}>
     
+    console.log(messageObject.userObject.id);
+    console.log(testFlag);
+    
+
     return (
         
     <>
-        <div className={`message received`}>
+        <div className={`${className} message  chatApp__convMessageItem`}>
             <img src={messageObject.userObject.userAvatar} alt="avatar" className='' />    
-            <p>{messageObject.content}
-                <div className='messageTimeStamp'>{messageObject.timeSent || "Time not available"}</div>
-            </p>
-        </div>
-        <div className={`message sent`}>
-            <img src={messageObject.userObject.userAvatar} alt="avatar" className='' />    
-            <p>{messageObject.content}
-                <div className='messageTimeStamp'>{messageObject.timeSent || "Time not available"}</div>
-            </p>
+            <div>{messageObject.content}
+                <p className='messageTimeStamp'>{messageObject.timeSent || "Time not available"}</p>
+          
+            </div>
         </div>
     </>)
 

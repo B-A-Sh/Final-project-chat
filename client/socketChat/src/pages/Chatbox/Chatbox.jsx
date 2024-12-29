@@ -13,6 +13,9 @@ const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg,userObject}
         // alert(`Form submitted with:`);
         sendMessagesToEveryone();
     }
+    console.log(`this is the user id - ${userObject.id}`);
+   
+    
     return (
         <div className='chatbox'>
             <header>
@@ -24,8 +27,9 @@ const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg,userObject}
                         {messages && messages.map(m =>(
                             <div key={m.messageId}>
                                 <ChatMessage  
-                                className={m.userObject.id==userObject.id ? 'sent' : 'received'}
-                                messageObject={m} ></ChatMessage>
+                                className={m.userObject.id === userObject.id ? 'sent' : 'received'}
+                                messageObject={m}  
+                                ></ChatMessage>
                                 <br />
                             </div>
                         ))}
