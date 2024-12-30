@@ -1,4 +1,3 @@
-import './chatMessage.css'
 
 const chatMessage = ({messageObject,testFlag,className}) => {
     // const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
@@ -15,6 +14,8 @@ const chatMessage = ({messageObject,testFlag,className}) => {
             <div>{messageObject.content}
                 <p className='messageTimeStamp'>{messageObject.timeSent || "Time not available"}</p>
             </div>
+            <br />
+            <br />
             <br />
         </div>
     </>)

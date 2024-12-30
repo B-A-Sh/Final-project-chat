@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import { socket } from '../utils/socket';
 import Chatbox from './Chatbox/Chatbox';
+import ChatList from './chat components/ChatList';
 
 
 const HomePage = () => {
     const [messages, setMessages] = useState([]);
     const [userMsg, setUserMsg] = useState('');
-    const [avatar, setAvatar] = useState('../src/assets/men logo.png')
-    const [userName, setuserName] = useState("Bar amos")
     // const [otherName, setotherName] = useState("Adele")
     const [userObject, setuserObject] = useState(
       {id : Date.now(),
@@ -26,7 +25,6 @@ const HomePage = () => {
     //   setMessages(messageHistory)
     // })
     useEffect(() => {
-
       socket.on("receiveMessage", (msg)=>{
         setMessages([...messages,msg])
       })
@@ -40,17 +38,21 @@ const HomePage = () => {
             setUserMsg("")
         }
     }
-
     return (
-        <>
+        <div className='mainChatPage'>
+          <div>
            <Chatbox messages={messages} 
                     sendMessagesToEveryone={sendMessagesToEveryone}
                     setUserMsg={setUserMsg}
                     userMsg={userMsg}
                     userObject={userObject}>
             </Chatbox>
-            
-        </>
+          </div>
+          <div>
+            <ChatList ></ChatList>
+          </div>
+
+        </div>
   )
 }
 
