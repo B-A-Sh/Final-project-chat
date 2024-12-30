@@ -1,4 +1,3 @@
-import React from 'react'
 import './chatMessage.css'
 
 const chatMessage = ({messageObject,testFlag,className}) => {
@@ -10,18 +9,15 @@ const chatMessage = ({messageObject,testFlag,className}) => {
     
 
     return (
-        
     <>
         <div className={`${className} message  chatApp__convMessageItem`}>
             <img src={messageObject.userObject.userAvatar} alt="avatar" className='' />    
             <div>{messageObject.content}
                 <p className='messageTimeStamp'>{messageObject.timeSent || "Time not available"}</p>
-          
             </div>
+            <br />
         </div>
     </>)
-
-  
 }
 
 export default chatMessage

@@ -23,17 +23,12 @@ const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg,userObject}
             </header>
             <section>
                 <main>
-                    <div id='messagesBoard'>
-                        {messages && messages.map(m =>(
-                            <div key={m.messageId}>
-                                <ChatMessage  
-                                className={m.userObject.id === userObject.id ? 'sent' : 'received'}
-                                messageObject={m}  
-                                ></ChatMessage>
-                                <br />
-                            </div>
-                        ))}
-                    </div>
+                    {messages && messages.map(m =>(
+                            <ChatMessage key={m.messageId} 
+                            className={m.userObject.id === userObject.id ? 'sent' : 'received'}
+                            messageObject={m}  
+                            ></ChatMessage>                        
+                    ))}
                 </main>
                 <form onSubmit={sendMessage}>
                     <label htmlFor='inputMsg' ></label>
@@ -44,14 +39,11 @@ const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg,userObject}
                         placeholder='enter your message'
                         onChange={(e)=> {
                             setUserMsg(e.target.value)
-                        }}
-                        />
+                        }}/>
                     <button type='submit'>✨</button>
                 </form>                   
             </section>
-
         </div>
     )
 }
-
 export default Chatbox
