@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { socket } from '../utils/socket';
-import Chatbox from './Chatbox/Chatbox';
+import Chatbox from './chat components/Chatbox';
 import ChatList from './chat components/ChatList';
 
+export const Context = React.createContext();
 
 const HomePage = () => {
     const [messages, setMessages] = useState([]);
     const [userMsg, setUserMsg] = useState('');
-    // const [otherName, setotherName] = useState("Adele")
     const [userObject, setuserObject] = useState(
       {id : Date.now(),
       userName:"Bar-amos",
@@ -39,6 +39,7 @@ const HomePage = () => {
         }
     }
     return (
+      <Context.Provider value={userObject}>
         <div className='mainChatPage'>
           <div>
            <Chatbox messages={messages} 
@@ -51,8 +52,8 @@ const HomePage = () => {
           <div>
             <ChatList ></ChatList>
           </div>
-
         </div>
+      </Context.Provider>
   )
 }
 

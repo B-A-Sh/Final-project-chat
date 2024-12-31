@@ -2,7 +2,7 @@
 // import { useState } from 'react'
 // import './style.css'
 import './finalStyle.css'
-import ChatMessage from '../chat components/chatMessage.jsx';
+import ChatMessage from './chatMessage.jsx';
 
 
 const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg,userObject}) => {
