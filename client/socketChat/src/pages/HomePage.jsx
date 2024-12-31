@@ -48,10 +48,7 @@ const HomePage = () => {
                     userObject={userObject}>
             </Chatbox>
           </div>
-          <div>
             <ChatList ></ChatList>
-          </div>
-
         </div>
   )
 }

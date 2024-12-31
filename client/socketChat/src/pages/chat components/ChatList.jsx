@@ -23,13 +23,12 @@ const ChatList = () => {
         ]
     }])
     return (
-        <div className="ChatList">
+        <div className="chatList">
             <header></header>
             <main>
                 {ChatList.map(c=>(
                     <ChatListObject key={Date.now()} chat={c}></ChatListObject>
                 ))}
-                
             </main>
         </div>
     )

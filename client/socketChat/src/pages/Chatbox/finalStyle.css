@@ -40,10 +40,6 @@
 
 }
 
-body {
-  background-color: #0f3e9c;
-}
-
 .chatbox {
 background-color: #e0dacc;
 /* background-color: #ebaa08; */
@@ -51,9 +47,6 @@ text-align: center;
 /* max-width: 728px; */
 margin: 0 auto;
 position: relative;
-}
-.chatList{
-  height: 100%;
 }
 /* .chatbox header { */
 header {
@@ -101,7 +94,7 @@ main::-webkit-scrollbar-track {
   background: #5DB996;
 }
 main::-webkit-scrollbar-thumb {
-    background: #118B50;
+  background: #118B50;
 }
 
 form {
@@ -129,13 +122,13 @@ form button {
     align-items: center;
     border: none;
     margin-left: 0.5rem;
-}
-form button:hover{
-  opacity: 0.8;
-  background-color: #118B50;
-}
-
-form input {
+  }
+  form button:hover{
+    opacity: 0.8;
+    background-color: #118B50;
+  }
+  
+  form input {
   line-height: 1.5;
   width: 100%;
   font-size: 1.5rem;
@@ -152,8 +145,8 @@ form input {
 }
 
 .button {
-    background-color: #282c34; 
-    border: none;
+  background-color: #282c34; 
+  border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -164,35 +157,35 @@ form input {
 }
 
 button:disabled {
-    opacity: 0.5;
+  opacity: 0.5;
     cursor: not-allowed;
-}
-
-
-.sign-in {
-  color: #282c34;
-  background: white;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-ul, li {
+  }
+  
+  
+  .sign-in {
+    color: #282c34;
+    background: white;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  ul, li {
     text-align: left;
     list-style: none;
-}
-
-/* tag style */
-.p {
+  }
+  
+  /* tag style */
+  .p {
     max-width: 500px;
-  margin-bottom: 12px;
-  line-height: 24px;
-  padding: 10px 20px;
-  border-radius: 25px;
-  position: relative;
-  /* color: white; */
-  /* color: #ff0000; */
-  text-align: center;
-}
+    margin-bottom: 12px;
+    line-height: 24px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    position: relative;
+    /* color: white; */
+    /* color: #ff0000; */
+    text-align: center;
+  }
 
 .message {
   display: flex;
@@ -243,6 +236,10 @@ img {
   border-radius: 50%;
   margin: 2px 5px;
 }
+.chatList{
+  /* height: 100%; */
+  position: relative;
+}
 
 .ChatListObject{
   border: 3px solid rgb(255, 187, 0);
@@ -250,13 +247,19 @@ img {
 
 }
 .chatList main{
-  border: 3px solid blue;
+  background-color: #0f3e9c;
   padding: 8px;
-  height: 80vh;
-  margin: 10vh 0 10vh;
+  height: 90vh;
+  margin: 8vh 0 ;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  /* box-sizing: border-box; */
-
+  box-sizing: border-box;
 }
+padding: 8px;
+height: 80vh;
+margin: 10vh 0 10vh;
+overflow-y: scroll;
+display: flex;
+flex-direction: column;
+
