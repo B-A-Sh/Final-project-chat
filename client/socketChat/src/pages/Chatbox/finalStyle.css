@@ -54,8 +54,11 @@ position: relative;
 }
 .chatList{
   height: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 /* .chatbox header { */
+
 header {
   background-color: #118B50;
   height: 8vh;
@@ -63,9 +66,10 @@ header {
   color: #FBF6E9;
   /* position: fixed; */
   width: 100%;  
+  /* width: 100vw;   */
   position: absolute;
   /* max-width: 728px; */
-  /* top: 0; */
+  top: 0;
   display: flex;
   align-items: center;
   /* justify-content: space-between; */

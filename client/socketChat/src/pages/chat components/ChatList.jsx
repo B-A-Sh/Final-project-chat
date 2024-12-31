@@ -3,15 +3,15 @@ const ChatList = () => {
 
     // const [ChatList, setChatList] = useState([{}])
 return (
-    <>
-        <header>
-            
+    <div className="chatList">
+        <header >
+            Chat list
         </header>
         <main>
 
             בדיקה בדיקה
         </main>
-    </>
+    </div>
   )
 }
 
