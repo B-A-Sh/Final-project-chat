@@ -1,8 +1,12 @@
 // import React from 'react'
+import '../Chatbox/finalStyle.css'
+
 
 const ChatListObject = () => {
   return (
-    <div>ChatListObject</div>
+    <div className="ChatListObject">
+      <img src=''></img>
+    </div>
   )
 }
 

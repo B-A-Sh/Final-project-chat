@@ -84,7 +84,7 @@ section {
   /* background-color: #FBF6E9; */
 }
 
-main {
+.chatbox main {
   padding: 8px;
   height: 80vh;
   margin: 10vh 0 10vh;
@@ -244,5 +244,19 @@ img {
   margin: 2px 5px;
 }
 
-/**/
+.ChatListObject{
+  border: 3px solid rgb(255, 187, 0);
+  height: 5vh;
 
+}
+.chatList main{
+  border: 3px solid blue;
+  padding: 8px;
+  height: 80vh;
+  margin: 10vh 0 10vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  /* box-sizing: border-box; */
+
+}
