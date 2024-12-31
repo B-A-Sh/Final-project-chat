@@ -26,7 +26,7 @@ const HomePage = () => {
     // })
     useEffect(() => {
       socket.on("receiveMessage", (msg)=>{
-        setMessages([...messages,msg])
+        setMessages([msg,...messages])
       })
     }, [messages])
     

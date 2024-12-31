@@ -91,7 +91,8 @@ main {
   margin: 10vh 0 10vh;
   overflow-y: scroll;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+
 }
 
 main::-webkit-scrollbar {
@@ -241,7 +242,7 @@ ul, li {
 
 .chatList{
   height: 100%;
-  overflow-x: hidden;
+  overflow-y: hidden;
   position: relative;
   width: auto;
   max-width: 20rem ;
@@ -249,7 +250,8 @@ ul, li {
 .chatList main{
   padding: 0;
   margin: 8vh 0 0 0 ;
-  height: auto;
+  max-height: 100vh;
+  height: 92vh;
 }
 
 .ChatListObject{

@@ -6,15 +6,16 @@ import ChatMessage from './chatMessage.jsx';
 
 
 const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg,userObject}) => {
-	// const [messages, setMessages] = useState(props.messages)
 
     const sendMessage = (event) =>{
         event.preventDefault();
         // alert(`Form submitted with:`);
         sendMessagesToEveryone();
     }
-    console.log(`this is the user id - ${userObject.id}`);
-   
+    const scrollToBottom = ()=> {
+        const chatContainer = document.getElementById('chat-container');
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
     
     return (
         <div className='chatbox'>
