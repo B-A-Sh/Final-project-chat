@@ -2,29 +2,29 @@ import React, { useEffect, useState } from 'react'
 import { socket } from '../utils/socket';
 import Chatbox from './chat components/Chatbox';
 import ChatList from './chat components/ChatList';
+import chatDB from "../assets/Mockedchats.js"
+
 
 export const Context = React.createContext();
 
 const HomePage = () => {
     const [messages, setMessages] = useState([]);
     const [userMsg, setUserMsg] = useState('');
+    const [currentChat, setCurrentChat] = useState();
     const [userObject, setuserObject] = useState(
       {id : Date.now(),
       userName:"Bar-amos",
       userAvatar: '../src/assets/men logo.png',
       email:'boby@gmail.com',
       isFemale:'false'
-    })
-
-
-    // socket.emit("getMessageHistory")
-    // console.log("getMessageHistory emited");
-    // console.log("listening to sendMessageHistory emit)
-    // console.log("sendMessageHistory emit recived);
-    // socket.on("sendMessageHistory",(messageHistory)=>{
-    //   setMessages(messageHistory)
-    // })
+    });
+    const [chatList, setChatList] = useState()
+    
+    
+    
+    
     useEffect(() => {
+      setChatList(chatDB);
       socket.on("receiveMessage", (msg)=>{
         setMessages([msg,...messages])
       })
@@ -32,11 +32,11 @@ const HomePage = () => {
     
     
     const sendMessagesToEveryone = () =>{
-        if(userMsg){
+      if(userMsg){
             const message = {userObject,userMsg}
             socket.emit("sendMessagesToEveryone",message)
             setUserMsg("")
-        }
+          }
     }
     return (
       <Context.Provider value={userObject}>
@@ -45,16 +45,27 @@ const HomePage = () => {
            <Chatbox messages={messages} 
                     sendMessagesToEveryone={sendMessagesToEveryone}
                     setUserMsg={setUserMsg}
-                    userMsg={userMsg}
-                    userObject={userObject}>
+                    userMsg={userMsg}>
             </Chatbox>
           </div>
-          <div>
-            <ChatList ></ChatList>
-          </div>
+          <>
+            <ChatList chatList={chatList} ></ChatList>
+          </>
         </div>
       </Context.Provider>
   )
 }
-
 export default HomePage
+
+
+
+
+
+
+// socket.emit("getMessageHistory")
+// console.log("getMessageHistory emited");
+// console.log("listening to sendMessageHistory emit)
+// console.log("sendMessageHistory emit recived);
+// socket.on("sendMessageHistory",(messageHistory)=>{
+//   setMessages(messageHistory)
+// })

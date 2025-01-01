@@ -1,11 +1,15 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
 import ChatListObject from "./ChatListObject"
-import { chatDB } from "../../assets/Mockedchats"
 
-const ChatList = () => {
-    const [ChatList, setChatList] = useState(chatDB)
-    useEffect(() => {
-    }, [])
+// const [chatList, setChatList] = useState(chatDB)
+
+const ChatList = ({chatList}) => {
+
+
+    // useEffect(() => {
+    //     // setChatList(chatDB)
+    // }, [])
     
     return (
     <div className="chatList">
@@ -13,7 +17,7 @@ const ChatList = () => {
             <h5>Chat list</h5>
         </header>
         <main>
-            {ChatList.map((c)=>(
+            {chatList.map((c)=>(
                 <ChatListObject key={Date.now()} chat={c}></ChatListObject>
             ))}
         </main>

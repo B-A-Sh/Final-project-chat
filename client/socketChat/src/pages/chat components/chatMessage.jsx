@@ -1,15 +1,21 @@
+import { useContext } from "react"
+import { Context } from "../HomePage"
 
-const chatMessage = ({messageObject,testFlag,className}) => {
+
+const ChatMessage = ({messageObject}) => {
     // const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
     // <div className={`message ${messageClass}`}>
     
-    console.log(messageObject.userObject.id);
-    console.log(testFlag);
-    
+    const userObject = useContext(Context)
+
+    // console.log(messageObject.userObject.id);
+
+    const messageClass = messageObject.userObject.id === userObject.id ? 'sent' : 'received'
+
 
     return (
     <>
-        <div className={`${className} message  chatApp__convMessageItem`}>
+        <div className={`${messageClass} message `}>
             <img src={messageObject.userObject.userAvatar} alt="avatar" className='' />    
             <div>{messageObject.content}
                 <p className='messageTimeStamp'>{messageObject.timeSent || "Time not available"}</p>
@@ -21,4 +27,4 @@ const chatMessage = ({messageObject,testFlag,className}) => {
     </>)
 }
 
-export default chatMessage
+export default ChatMessage

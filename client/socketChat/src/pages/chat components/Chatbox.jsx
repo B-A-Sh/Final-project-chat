@@ -2,20 +2,15 @@
 // import { useState } from 'react'
 // import './style.css'
 import './finalStyle.css'
-import ChatMessage from './chatMessage.jsx';
+import ChatMessage from './ChatMessage.jsx';
 
 
-const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg,userObject}) => {
+const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg}) => {
 
     const sendMessage = (event) =>{
         event.preventDefault();
-        // alert(`Form submitted with:`);
         sendMessagesToEveryone();
     }
-    const scrollToBottom = ()=> {
-        const chatContainer = document.getElementById('chat-container');
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-      }
     
     return (
         <div className='chatbox'>
@@ -25,10 +20,7 @@ const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg,userObject}
             <section>
                 <main>
                     {messages && messages.map(m =>(
-                            <ChatMessage key={m.messageId} 
-                            className={m.userObject.id === userObject.id ? 'sent' : 'received'}
-                            messageObject={m}  
-                            ></ChatMessage>                        
+                            <ChatMessage key={m.messageId} messageObject={m}></ChatMessage>                        
                     ))}
                 </main>
                 <form onSubmit={sendMessage}>
