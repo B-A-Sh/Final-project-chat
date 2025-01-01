@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ChatListObject from "./ChatListObject"
 import { chatDB } from "../../assets/Mockedchats"
 
 const ChatList = () => {
-
     const [ChatList, setChatList] = useState(chatDB)
+    useEffect(() => {
+    }, [])
+    
     return (
     <div className="chatList">
         <header >
