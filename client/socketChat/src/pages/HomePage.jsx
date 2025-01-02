@@ -6,11 +6,30 @@ import chatDB from "../assets/Mockedchats.js"
 
 
 export const Context = React.createContext();
+const chat = {
+  messaagesList:[],
+  Participants:[
+      {
+          id : 25,
+          userName:"Bar-amos",
+          userAvatar: '../src/assets/men logo.png',
+          email:'boby@gmail.com',
+          isFemale:'false'
+      },
+      {
+          id : 22,
+          userName:"Adele",
+          userAvatar: '../src/assets/women logo.png',
+          email:'adele@gmail.com',
+          isFemale:'true'
+      }
+  ]
+}
 
 const HomePage = () => {
     const [messages, setMessages] = useState([]);
     const [userMsg, setUserMsg] = useState('');
-    const [currentChat, setCurrentChat] = useState();
+    const [currentChat, setCurrentChat] = useState(chat);
     const [userObject, setuserObject] = useState(
       {id : Date.now(),
       userName:"Bar-amos",
@@ -18,15 +37,20 @@ const HomePage = () => {
       email:'boby@gmail.com',
       isFemale:'false'
     });
-    const [chatList, setChatList] = useState()
-    
-    
-    
-    
+    const [chatList, setChatList] = useState(chatDB)
+
+
+    const addObjectToArray = (newObject, targetArray) => {
+      setCurrentChat((prevState) => ({
+        ...prevState,
+        [targetArray]: [...prevState[targetArray], newObject],
+      }));
+    };
+
     useEffect(() => {
-      setChatList(chatDB);
       socket.on("receiveMessage", (msg)=>{
         setMessages([msg,...messages])
+        setCurrentChat();
       })
     }, [messages])
     
@@ -42,7 +66,7 @@ const HomePage = () => {
       <Context.Provider value={userObject}>
         <div className='mainChatPage'>
           <div>
-           <Chatbox messages={messages} 
+           <Chatbox currentChat={currentChat} 
                     sendMessagesToEveryone={sendMessagesToEveryone}
                     setUserMsg={setUserMsg}
                     userMsg={userMsg}>
@@ -56,11 +80,6 @@ const HomePage = () => {
   )
 }
 export default HomePage
-
-
-
-
-
 
 // socket.emit("getMessageHistory")
 // console.log("getMessageHistory emited");

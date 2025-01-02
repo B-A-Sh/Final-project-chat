@@ -5,7 +5,7 @@ import './finalStyle.css'
 import ChatMessage from './ChatMessage.jsx';
 
 
-const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg}) => {
+const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
 
     const sendMessage = (event) =>{
         event.preventDefault();
@@ -19,7 +19,7 @@ const Chatbox = ({messages,sendMessagesToEveryone,userMsg,setUserMsg}) => {
             </header>
             <section>
                 <main>
-                    {messages && messages.map(m =>(
+                    {currentChat && currentChat.messaagesList.map(m =>(
                             <ChatMessage key={m.messageId} messageObject={m}></ChatMessage>                        
                     ))}
                 </main>
