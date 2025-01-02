@@ -5,7 +5,6 @@ import { Context } from "../HomePage"
 
 const ChatMessage = ({messageObject}) => {
     const currentUserObject = useContext(Context)
-
     const messageClass = messageObject.userObject.id === currentUserObject.id ? 'sent' : 'received'
 
     return (

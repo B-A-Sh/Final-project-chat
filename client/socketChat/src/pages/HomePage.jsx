@@ -8,17 +8,17 @@ import chatDB from "../assets/Mockedchats.js"
 export const Context = React.createContext();
 const chat = {
   messaagesList:[
-    {
-      serObject:{
-        id : 25,
-        userName:"Bar-amos",
-        userAvatar: '../src/assets/men logo.png',
-        email:'boby@gmail.com',
-        isFemale:'false'},
-      messageId:1735834876167,
-      timeSent:'18:21', 
-      content:'s'
-  }
+  //   {
+  //     userObject:{
+  //       id : 25,
+  //       userName:"Bar-amos",
+  //       userAvatar: '../src/assets/men logo.png',
+  //       email:'boby@gmail.com',
+  //       isFemale:'false'},
+  //     messageId:1735834876167,
+  //     timeSent:'18:21', 
+  //     content:'s'
+  // }
 ],
   Participants:[
       {
@@ -41,8 +41,8 @@ const HomePage = () => {
     const [messages, setMessages] = useState([]);
     const [userMsg, setUserMsg] = useState('');
     const [currentChat, setCurrentChat] = useState(chat);
-    const [currentUserObject, setuserObject] = useState(
-      {id : Date.now(),
+    const [currentUserObject, setCurrentUserObject] = useState(
+      {id : "0544463378",
       userName:"Bar-amos",
       userAvatar: '../src/assets/men logo.png',
       email:'boby@gmail.com',
@@ -51,18 +51,18 @@ const HomePage = () => {
     const [chatList, setChatList] = useState(chatDB)
 
 
-    const addObjectToArray = (newObject, targetArray) => {
-      setCurrentChat((prevState) => ({
-        ...prevState,
-        [targetArray]: [...prevState[targetArray], newObject],
-      }));
-    };
+    // const addObjectToArray = (newObject, targetArray) => {
+    //   setCurrentChat((prevState) => ({
+    //     ...prevState,
+    //     [targetArray]: [...prevState[targetArray], newObject],
+    //   }));
+    // };
 
     useEffect(() => {
       socket.on("receiveMessage", (msg)=>{
-        setMessages([msg,...messages])
+        // setMessages([msg,...messages])
         chat.messaagesList.push(msg)
-        // setCurrentChat(chat);
+        setCurrentChat(chat);
       })
     }, [messages])
     
@@ -74,6 +74,7 @@ const HomePage = () => {
             setUserMsg("")
           }
     }
+
     return (
       <Context.Provider value={currentUserObject}>
         <div className='mainChatPage'>
