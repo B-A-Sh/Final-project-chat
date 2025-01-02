@@ -7,7 +7,19 @@ import chatDB from "../assets/Mockedchats.js"
 
 export const Context = React.createContext();
 const chat = {
-  messaagesList:[],
+  messaagesList:[
+    {
+      serObject:{
+        id : 25,
+        userName:"Bar-amos",
+        userAvatar: '../src/assets/men logo.png',
+        email:'boby@gmail.com',
+        isFemale:'false'},
+      messageId:1735834876167,
+      timeSent:'18:21', 
+      content:'s'
+  }
+],
   Participants:[
       {
           id : 25,
@@ -25,12 +37,11 @@ const chat = {
       }
   ]
 }
-
 const HomePage = () => {
     const [messages, setMessages] = useState([]);
     const [userMsg, setUserMsg] = useState('');
     const [currentChat, setCurrentChat] = useState(chat);
-    const [userObject, setuserObject] = useState(
+    const [currentUserObject, setuserObject] = useState(
       {id : Date.now(),
       userName:"Bar-amos",
       userAvatar: '../src/assets/men logo.png',
@@ -50,20 +61,21 @@ const HomePage = () => {
     useEffect(() => {
       socket.on("receiveMessage", (msg)=>{
         setMessages([msg,...messages])
-        setCurrentChat();
+        chat.messaagesList.push(msg)
+        // setCurrentChat(chat);
       })
     }, [messages])
     
     
     const sendMessagesToEveryone = () =>{
       if(userMsg){
-            const message = {userObject,userMsg}
+            const message = {currentUserObject,userMsg}
             socket.emit("sendMessagesToEveryone",message)
             setUserMsg("")
           }
     }
     return (
-      <Context.Provider value={userObject}>
+      <Context.Provider value={currentUserObject}>
         <div className='mainChatPage'>
           <div>
            <Chatbox currentChat={currentChat} 

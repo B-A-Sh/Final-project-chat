@@ -44,7 +44,7 @@ io.on("connection",(socket) => {
     
     socket.on("sendMessagesToEveryone",(message)=> {
         const messageObject = {
-            userObject:message.userObject,
+            userObject:message.currentUserObject,
             messageId: Date.now(),
             timeSent: new Date(Date.now()).toLocaleTimeString('en-US',{
                 hour: '2-digit',

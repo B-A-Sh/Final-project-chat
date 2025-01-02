@@ -1,17 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react"
 import { Context } from "../HomePage"
 
 
 const ChatMessage = ({messageObject}) => {
-    // const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
-    // <div className={`message ${messageClass}`}>
-    
-    const userObject = useContext(Context)
+    const currentUserObject = useContext(Context)
 
-    // console.log(messageObject.userObject.id);
-
-    const messageClass = messageObject.userObject.id === userObject.id ? 'sent' : 'received'
-
+    const messageClass = messageObject.userObject.id === currentUserObject.id ? 'sent' : 'received'
 
     return (
     <>

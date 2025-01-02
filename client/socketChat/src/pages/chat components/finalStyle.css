@@ -45,7 +45,11 @@ body {
 }
 
 .chatbox {
-background-color: #e0dacc;
+/* background: #E3F0AF; */
+/* background: -moz-linear-gradient(left, #E3F0AF 0%, #FBF6E9 50%, #E3F0AF 100%); */
+/* background: -webkit-linear-gradient(left, #E3F0AF 0%, #FBF6E9 50%, #E3F0AF 100%); */
+background: linear-gradient(to right, #E3F0AF 0%, #FBF6E9 50%, #E3F0AF 100%);
+/* background-color: #e0dacc; */
 /* background-color: #ebaa08; */
 text-align: center;
 /* max-width: 728px; */
@@ -206,9 +210,10 @@ ul, li {
   align-items: center;
   animation: fadeChatApp 0.3s ease-in-out;
   animation-fill-mode: forwards;
-
+  
 }
 .message div{
+  box-shadow: 0px 0px 10px 0px #000000af;
   border-radius: 10px;
   padding: 5px;
 }
@@ -242,11 +247,13 @@ ul, li {
 }
 
 .chatList{
+  background-color: #FBF6E9;
   height: 100%;
   overflow-y: hidden;
   position: relative;
   width: auto;
   /* max-width: 20rem ; */
+  border-left: 0.2vw solid rgba(95, 93, 93, 0.377);
 }
 .chatList main{
   padding: 0;
@@ -256,7 +263,8 @@ ul, li {
 }
 
 .ChatListObject{
-  border: 3px solid blue;
+  border: 3px solid #5DB996;
+  border-bottom: 0;
   display: flex;
   flex-direction: row-reverse;
   /* justify-content: space-evenly; */
@@ -267,6 +275,7 @@ ul, li {
 .ChatListObject div{
   text-align: right; 
   overflow-y: hidden;
+  padding-left: 0.5vw;
 }
 .ChatListObject h6{
   margin-top: 0.5rem;
@@ -280,6 +289,7 @@ ul, li {
   /* width: 200px; */
   /* max-width: 200px; */
   width: auto;
+  
 
 }
 

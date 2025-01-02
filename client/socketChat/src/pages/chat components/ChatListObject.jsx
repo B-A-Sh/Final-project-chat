@@ -9,22 +9,13 @@ const ChatListObject = ({chat}) => {
   const [chatTitle, setChatTitle] = useState();
   const [firstMsg, setFirstMsg] = useState(chat.messaagesList[(chat?.messaagesList.length-1)])
     
-
-  useEffect(() => {
-    if(chat?.Participants?.length >2){
-    setisGroup(true)
-    }
-
-  }, [])
   
-  console.log("arr",chat.Participants)
+  // useEffect(() => {
+  //   if(chat?.Participants?.length >2){
+  //   setisGroup(true)
+  //   }
 
-  console.log(chat);
-  
-  console.log(`the chat object is: ${chat}`);
-  console.log(isGroup);
-  console.log(firstMsg);
-  
+  // }, [])
   
   
 
@@ -34,7 +25,7 @@ const ChatListObject = ({chat}) => {
       <img src={userObject.userAvatar}></img>
       <div>
         <h6>chat name</h6>
-        <p>chat summery</p>
+        {/* <p>chat summery</p> */}
         <p>chat summery Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, veniam! </p>
       </div>
     </div>  )
