@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from "react"
-import { Context } from "../HomePage"
+import { Context } from "../../HomePage"
 
 const ChatListObject = ({chat}) => {
   const userObject = useContext(Context)

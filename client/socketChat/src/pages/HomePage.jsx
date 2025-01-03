@@ -1,28 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { socket } from '../utils/socket';
-import Chatbox from './chat components/Chatbox';
-import ChatList from './chat components/ChatList';
+import Chatbox from './chat components/Chatbox/Chatbox.jsx';
+import ChatList from './chat components/Chatlist/ChatList.jsx';
 import chatDB from "../assets/Mockedchats.js"
 
 
 export const Context = React.createContext();
 const chat = {
-  messaagesList:[
-  //   {
-  //     userObject:{
-  //       id : 25,
-  //       userName:"Bar-amos",
-  //       userAvatar: '../src/assets/men logo.png',
-  //       email:'boby@gmail.com',
-  //       isFemale:'false'},
-  //     messageId:1735834876167,
-  //     timeSent:'18:21', 
-  //     content:'s'
-  // }
-],
+  messaagesList:[],
   Participants:[
       {
-          id : 25,
+          id : "0544463378",
           userName:"Bar-amos",
           userAvatar: '../src/assets/men logo.png',
           email:'boby@gmail.com',
@@ -63,8 +51,9 @@ const HomePage = () => {
         // setMessages([msg,...messages])
         chat.messaagesList.push(msg)
         setCurrentChat(chat);
+        console.log(messages);
       })
-    }, [messages])
+    }, [])
     
     
     const sendMessagesToEveryone = () =>{
@@ -101,3 +90,15 @@ export default HomePage
 // socket.on("sendMessageHistory",(messageHistory)=>{
 //   setMessages(messageHistory)
 // })
+
+  //   {
+  //     userObject:{
+  //       id : 25,
+  //       userName:"Bar-amos",
+  //       userAvatar: '../src/assets/men logo.png',
+  //       email:'boby@gmail.com',
+  //       isFemale:'false'},
+  //     messageId:1735834876167,
+  //     timeSent:'18:21', 
+  //     content:'s'
+  // }

@@ -17,7 +17,8 @@ const chatDB = [
                 email:'adele@gmail.com',
                 isFemale:'true'
             }
-        ]
+        ],
+        isGroup:false
     },
     {
         messaagesList:[],
@@ -36,7 +37,8 @@ const chatDB = [
                 email:'adele@gmail.com',
                 isFemale:'true'
             }
-        ]
+        ],
+        isGroup:false
     },{
         messaagesList:[],
         Participants:[
@@ -54,7 +56,8 @@ const chatDB = [
                 email:'adele@gmail.com',
                 isFemale:'true'
             }
-        ]
+        ],
+        isGroup:false
     },
     {
         messaagesList:[],
@@ -73,10 +76,11 @@ const chatDB = [
                 email:'adele@gmail.com',
                 isFemale:'true'
             }
-        ]
+        ],
+        isGroup:false
     },{
         messaagesList:[],
-        7415:[
+        Participants:[
             {
                 id : 25,
                 userName:"Bar-amos",
@@ -90,8 +94,16 @@ const chatDB = [
                 userAvatar: '../src/assets/women logo.png',
                 email:'adele@gmail.com',
                 isFemale:'true'
+            },
+            {
+                id : 30,
+                userName:"Daniel",
+                userAvatar: '../src/assets/men logo.png',
+                email:'danielRayfer@gmail.com',
+                isFemale:'false'
             }
-        ]
+        ],
+        isGroup:false
     },
     
 ];
