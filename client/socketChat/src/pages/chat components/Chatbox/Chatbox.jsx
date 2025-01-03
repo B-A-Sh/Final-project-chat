@@ -59,11 +59,3 @@ const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
     )
 }
 export default Chatbox
-            // if(currentChat.isGroup){
-            //     setchatName("defult")
-            // }else{
-            //     currentChat.Participants.forEach((user)=>{
-            //         if(user === currentUserObject)
-            //             setchatName(user.userName)
-            //     })
-            // }

@@ -39,19 +39,19 @@ const HomePage = () => {
     const [chatList, setChatList] = useState(chatDB)
 
 
-    // const addObjectToArray = (newObject, targetArray) => {
-    //   setCurrentChat((prevState) => ({
-    //     ...prevState,
-    //     [targetArray]: [...prevState[targetArray], newObject],
-    //   }));
-    // };
 
     useEffect(() => {
       socket.on("receiveMessage", (msg)=>{
         // setMessages([msg,...messages])
-        chat.messaagesList.push(msg)
-        setCurrentChat(chat);
-        console.log(messages);
+
+        setCurrentChat((prevChat) => ({
+          ...prevChat,
+          messaagesList: [...prevChat.messaagesList, msg],
+        }));
+
+        // chat.messaagesList.push(msg)
+        // setCurrentChat(chat);
+        // console.log(messages);
       })
     }, [])
     
@@ -60,10 +60,13 @@ const HomePage = () => {
       if(userMsg){
             const message = {currentUserObject,userMsg}
             socket.emit("sendMessagesToEveryone",message)
+            // setCurrentChat((prevChat) => ({
+            //   ...prevChat,
+            //   messaagesList: [...prevChat.messaagesList, message],
+            // }));
             setUserMsg("")
           }
     }
-
     return (
       <Context.Provider value={currentUserObject}>
         <div className='mainChatPage'>
@@ -102,3 +105,11 @@ export default HomePage
   //     timeSent:'18:21', 
   //     content:'s'
   // }
+
+    // const addObjectToArray = (newObject, targetArray) => {
+    //   setCurrentChat((prevState) => ({
+    //     ...prevState,
+    //     [targetArray]: [...prevState[targetArray], newObject],
+    //   }));
+    // };
+
