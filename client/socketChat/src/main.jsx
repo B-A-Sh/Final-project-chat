@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* <Chatbox message="adele"></Chatbox> */}
     <HomePage></HomePage>
-  </StrictMode>,
+  </StrictMode>
 )

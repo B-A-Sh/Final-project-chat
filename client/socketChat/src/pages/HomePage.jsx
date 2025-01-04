@@ -30,7 +30,9 @@ const HomePage = () => {
     const [userMsg, setUserMsg] = useState('');
     const [currentChat, setCurrentChat] = useState(chat);
     const [currentUserObject, setCurrentUserObject] = useState(
-      {id : "0544463378",
+      {
+      id : Date.now(),
+      // id : "0544463378",
       userName:"Bar-amos",
       userAvatar: '../src/assets/men logo.png',
       email:'boby@gmail.com',
@@ -41,30 +43,23 @@ const HomePage = () => {
 
 
     useEffect(() => {
-      socket.on("receiveMessage", (msg)=>{
-        // setMessages([msg,...messages])
-
+      const handleReceiveMessage = (msg)=>{
         setCurrentChat((prevChat) => ({
           ...prevChat,
-          messaagesList: [...prevChat.messaagesList, msg],
+          messaagesList: [msg,...prevChat.messaagesList],
         }));
-
-        // chat.messaagesList.push(msg)
-        // setCurrentChat(chat);
-        // console.log(messages);
-      })
+      }
+      socket.on("receiveMessage",handleReceiveMessage)
+      return () => {
+        socket.off("receiveMessage", handleReceiveMessage);
+      };
     }, [])
     
     
     const sendMessagesToEveryone = () =>{
       if(userMsg){
             const message = {currentUserObject,userMsg}
-            socket.emit("sendMessagesToEveryone",message)
-            
-            // setCurrentChat((prevChat) => ({
-            //   ...prevChat,
-            //   messaagesList: [...prevChat.messaagesList, message],
-            // }));
+            socket.emit("sendMessagesToEveryone",message)            
             setUserMsg("")
           }
     }

@@ -13,35 +13,10 @@ const io = new Server(server,{
     cors:'*'
 })
 
-// ----
-// io.on("connection",(socket) => {
-//     console.log("user connected");
-//     // console.log(socket);
-    
-//     socket.on("sendMessagesToEveryone",(message)=> {
-//         const messageObject = {
-//             id: Date.now(),
-//             userName: message.userName,
-//             avatar: message.avatar,
-//             timeSent: Date.now(),
-//             content:message.userMsg
-//         }
-        
-//         io.emit("receiveMessage",messageObject)
-//         // io.emit("receiveMessage",message)
-//     })
-    
-// })
-//----
 //הסוקט למעשה זה מה הפרטים של המשתמש שהתחבר
 io.on("connection",(socket) => {
     console.log("user connected");
-    // console.log(socket);
-
-    // socket.on("getMessageHistory",() =>{
-    //     io.emit("sendMessageHistory",messagesHistory)
-    // })
-    
+    console.log(socket.id);    
     socket.on("sendMessagesToEveryone",(message)=> {
         const messageObject = {
             userObject: message.currentUserObject,
@@ -52,22 +27,39 @@ io.on("connection",(socket) => {
                 hour12: false}),
             content:message.userMsg
         }
-        // messagesHistory = [...messagesHistory,messageObject];
-        // io.emit("receiveMessage",messageObject)
-        socket.broadcast.emit("receiveMessage",messageObject)
-        // io.emit("receiveMessage",message)
+        io.emit("receiveMessage",messageObject)
+        // socket.broadcast.emit("receiveMessage",messageObject)
     })
     
 })
 
+
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
-
-
 
 server.listen(PORT,
     ()=>{
         console.log(`Listening in port ${PORT}`);
     }
 )
+    // ----
+    // io.on("connection",(socket) => {
+    //     console.log("user connected");
+    //     // console.log(socket);
+        
+    //     socket.on("sendMessagesToEveryone",(message)=> {
+    //         const messageObject = {
+    //             id: Date.now(),
+    //             userName: message.userName,
+    //             avatar: message.avatar,
+    //             timeSent: Date.now(),
+    //             content:message.userMsg
+    //         }
+            
+    //         io.emit("receiveMessage",messageObject)
+    //         // io.emit("receiveMessage",message)
+    //     })
+        
+    // })
+    //----
