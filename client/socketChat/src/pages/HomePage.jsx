@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { socket } from '../utils/socket';
 import Chatbox from './chat components/Chatbox/Chatbox.jsx';
 import ChatList from './chat components/Chatlist/ChatList.jsx';
 import chatDB from "../assets/Mockedchats.js"
-
-
 export const Context = React.createContext();
+
 const chat = {
   messaagesList:[],
   Participants:[
@@ -26,21 +25,18 @@ const chat = {
   ]
 }
 const HomePage = () => {
-    const [messages, setMessages] = useState([]);
-    const [userMsg, setUserMsg] = useState('');
-    const [currentChat, setCurrentChat] = useState(chat);
-    const [currentUserObject, setCurrentUserObject] = useState(
+  const [messages, setMessages] = useState([]);
+  const [userMsg, setUserMsg] = useState('');
+  const [currentChat, setCurrentChat] = useState(chat);
+  const [chatList, setChatList] = useState(chatDB)
+  const [currentUserObject, setCurrentUserObject] = useState(
       {
       id : Date.now(),
-      // id : "0544463378",
       userName:"Bar-amos",
       userAvatar: '../src/assets/men logo.png',
       email:'boby@gmail.com',
       isFemale:'false'
     });
-    const [chatList, setChatList] = useState(chatDB)
-
-
 
     useEffect(() => {
       const handleReceiveMessage = (msg)=>{
@@ -81,31 +77,3 @@ const HomePage = () => {
   )
 }
 export default HomePage
-
-// socket.emit("getMessageHistory")
-// console.log("getMessageHistory emited");
-// console.log("listening to sendMessageHistory emit)
-// console.log("sendMessageHistory emit recived);
-// socket.on("sendMessageHistory",(messageHistory)=>{
-//   setMessages(messageHistory)
-// })
-
-  //   {
-  //     userObject:{
-  //       id : 25,
-  //       userName:"Bar-amos",
-  //       userAvatar: '../src/assets/men logo.png',
-  //       email:'boby@gmail.com',
-  //       isFemale:'false'},
-  //     messageId:1735834876167,
-  //     timeSent:'18:21', 
-  //     content:'s'
-  // }
-
-    // const addObjectToArray = (newObject, targetArray) => {
-    //   setCurrentChat((prevState) => ({
-    //     ...prevState,
-    //     [targetArray]: [...prevState[targetArray], newObject],
-    //   }));
-    // };
-

@@ -2,10 +2,8 @@
 import { useEffect, useState } from "react"
 import ChatListObject from "./ChatListObject"
 
-// const [chatList, setChatList] = useState(chatDB)
 
 const ChatList = ({chatList}) => {
-
 
     // useEffect(() => {
     //     // setChatList(chatDB)
@@ -18,7 +16,7 @@ const ChatList = ({chatList}) => {
         </header>
         <main>
             {chatList.map((c)=>(
-                <ChatListObject key={Date.now()} chat={c}></ChatListObject>
+                <ChatListObject key={c.chatId} chat={c}></ChatListObject>
             ))}
         </main>
     </div>

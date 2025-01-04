@@ -10,13 +10,6 @@ const ChatListObject = ({chat}) => {
   const [firstMsg, setFirstMsg] = useState(chat.messaagesList[(chat?.messaagesList.length-1)])
     
   
-  // useEffect(() => {
-  //   if(chat?.Participants?.length >2){
-  //   setisGroup(true)
-  //   }
-
-  // }, [])
-  
   
 
   // const [chat, setChat] = useState(props.chat)

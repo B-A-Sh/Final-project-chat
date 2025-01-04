@@ -8,28 +8,27 @@ import { Context } from "../../HomePage"
 const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
     const currentUserObject = useContext(Context)   
     const [chatName, setChatName] = useState()
-    const sendMessage = (event) =>{
-        event.preventDefault();
-        sendMessagesToEveryone();
-    }
-    
+
     useEffect(() => {
         if (currentChat) {
             setChatName(currentChat.isGroup ? "default" : nameFinder());
         }
     }, [currentChat, currentUserObject]);
     
+    const sendMessage = (event) =>{
+        event.preventDefault();
+        sendMessagesToEveryone();
+    }
+
     const nameFinder = () => {
         const user = currentChat.Participants.find(user => user.id !== currentUserObject.id);
         return user ? user.userName : null;
     };
-    
-    // setchatName(currentChat.isGroup ? "defult": (nameFinder()))
-    // const nameFinder = ()=>{
-    //     const user = currentChat.Participants.find(user => user != currentUserObject);
-    //     return user ? user.userName : null;
-    // }
-    
+
+    const gameInvetaion = () =>{
+        alert('this method is still in development')
+    }
+     
     
     return (
         <div className='chatbox'>
@@ -52,6 +51,7 @@ const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
                         onChange={(e)=> {
                             setUserMsg(e.target.value)
                         }}/>
+                    <button type='button' onClick={gameInvetaion}>🎲</button>
                     <button type='submit'>✨</button>
                 </form>                   
             </section>
