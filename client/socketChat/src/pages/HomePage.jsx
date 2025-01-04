@@ -27,7 +27,8 @@ const chat = {
 const HomePage = () => {
   const [messages, setMessages] = useState([]);
   const [userMsg, setUserMsg] = useState('');
-  const [currentChat, setCurrentChat] = useState(chat);
+  const [currentChat, setCurrentChat] = useState(chatDB[0]);
+  // const [currentChat, setCurrentChat] = useState(chat);
   const [chatList, setChatList] = useState(chatDB)
   const [currentUserObject, setCurrentUserObject] = useState(
       {

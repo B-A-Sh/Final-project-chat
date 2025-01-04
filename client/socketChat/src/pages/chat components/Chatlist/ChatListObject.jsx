@@ -3,23 +3,36 @@ import { useContext, useEffect, useState } from "react"
 import { Context } from "../../HomePage"
 
 const ChatListObject = ({chat}) => {
-  const userObject = useContext(Context)
+  const currentUserObject = useContext(Context)
   const [isGroup, setisGroup] = useState(false)
   const [chatImage, setChatImage] = useState();
   const [chatTitle, setChatTitle] = useState();
   const [firstMsg, setFirstMsg] = useState(chat.messaagesList[(chat?.messaagesList.length-1)])
-    
   
-  
+  const avatarFinder = ()=>{
+    const user = chat.Participants.find(user => user.id !== currentUserObject.id);
+    return user ? user.userAvatar : null;
+  };
+  const nameFinder = () => {
+    const user = chat.Participants.find(user => user.id !== currentUserObject.id);
+    return user ? user.userName : null;
+  };
 
-  // const [chat, setChat] = useState(props.chat)
+  useEffect(() => {
+    setChatImage(!chat.isGroup ? avatarFinder():'../../../assets/group image.jpeg')
+    setChatTitle(!chat.isGroup ? nameFinder(): chat.chatRoomName)
+  }, [])
+  console.log('the first message is:');
+  
+  console.log(firstMsg);
+  
+  
   return (
     <div className="ChatListObject">
-      <img src={userObject.userAvatar}></img>
+      <img src={currentUserObject.userAvatar}></img>
       <div>
-        <h6>chat name</h6>
-        {/* <p>chat summery</p> */}
-        <p>chat summery Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, veniam! </p>
+        <h6>{chatTitle}</h6>
+        <p>{firstMsg || 'empty chat'} </p>
       </div>
     </div>  )
 }

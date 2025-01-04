@@ -11,7 +11,7 @@ const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
 
     useEffect(() => {
         if (currentChat) {
-            setChatName(currentChat.isGroup ? "default" : nameFinder());
+            setChatName(currentChat.isGroup ? currentChat.chatRoomName : nameFinder());
         }
     }, [currentChat, currentUserObject]);
     
@@ -33,7 +33,7 @@ const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
     return (
         <div className='chatbox'>
             <header>
-                <h1>{chatName || "Group chat"}</h1>
+                <h1>{chatName || "defult"}</h1>
             </header>
             <section>
                 <main>

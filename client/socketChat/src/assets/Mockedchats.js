@@ -2,6 +2,8 @@
 const chatDB = [
     {
         chatId:1,
+        chatRoomName:'final project 1',
+        isGroup:false,
         messaagesList:[],
         Participants:[
             {
@@ -18,11 +20,12 @@ const chatDB = [
                 email:'adele@gmail.com',
                 isFemale:'true'
             }
-        ],
-        isGroup:false
+        ]
     },
     {
         chatId:2,
+        chatRoomName:'final project 2',
+        isGroup:false,
         messaagesList:[],
         Participants:[
             {
@@ -39,10 +42,11 @@ const chatDB = [
                 email:'adele@gmail.com',
                 isFemale:'true'
             }
-        ],
-        isGroup:false
+        ]
     },{
         chatId:3,
+        chatRoomName:'final project 3',
+        isGroup:false,
         messaagesList:[],
         Participants:[
             {
@@ -59,11 +63,12 @@ const chatDB = [
                 email:'adele@gmail.com',
                 isFemale:'true'
             }
-        ],
-        isGroup:false
+        ]
     },
     {
         chatId:4,
+        chatRoomName:'final project 4',
+        isGroup:false,
         messaagesList:[],
         Participants:[
             {
@@ -80,10 +85,11 @@ const chatDB = [
                 email:'adele@gmail.com',
                 isFemale:'true'
             }
-        ],
-        isGroup:false
+        ]
     },{
         chatId:5,
+        chatRoomName:'final project 5',
+        isGroup:true,
         messaagesList:[],
         Participants:[
             {
@@ -107,8 +113,7 @@ const chatDB = [
                 email:'danielRayfer@gmail.com',
                 isFemale:'false'
             }
-        ],
-        isGroup:false
+        ]
     },
     
 ];
