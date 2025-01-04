@@ -5,9 +5,9 @@ import { Server } from "socket.io";
 import { log } from "console";
 import { receiveMessageOnPort } from "worker_threads";
  
+const messagesHistory = [];
 const PORT = 8080;
 const app = express();
-const messagesHistory = [];
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:'*'
@@ -53,7 +53,8 @@ io.on("connection",(socket) => {
             content:message.userMsg
         }
         // messagesHistory = [...messagesHistory,messageObject];
-        io.emit("receiveMessage",messageObject)
+        // io.emit("receiveMessage",messageObject)
+        socket.broadcast.emit("receiveMessage",messageObject)
         // io.emit("receiveMessage",message)
     })
     

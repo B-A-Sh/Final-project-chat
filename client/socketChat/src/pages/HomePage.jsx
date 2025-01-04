@@ -60,6 +60,7 @@ const HomePage = () => {
       if(userMsg){
             const message = {currentUserObject,userMsg}
             socket.emit("sendMessagesToEveryone",message)
+            
             // setCurrentChat((prevChat) => ({
             //   ...prevChat,
             //   messaagesList: [...prevChat.messaagesList, message],
