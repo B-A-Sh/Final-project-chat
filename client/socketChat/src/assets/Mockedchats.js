@@ -45,7 +45,7 @@ const chatDB = [
         ]
     },{
         chatId:5,
-        chatRoomName:'final project 5',
+        chatRoomName:'Public group',
         isGroup:true,
         messaagesList:[],
         Participants:[
