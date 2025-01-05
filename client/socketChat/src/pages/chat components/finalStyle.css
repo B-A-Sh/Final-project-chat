@@ -44,13 +44,11 @@ body {
   background-color: #0f3e9c;
 }
 
+.emptyChatMessage main{
+  justify-content: center;
+}
 .chatbox {
-/* background: #E3F0AF; */
-/* background: -moz-linear-gradient(left, #E3F0AF 0%, #FBF6E9 50%, #E3F0AF 100%); */
-/* background: -webkit-linear-gradient(left, #E3F0AF 0%, #FBF6E9 50%, #E3F0AF 100%); */
 background: linear-gradient(to right, #E3F0AF 0%, #FBF6E9 50%, #E3F0AF 100%);
-/* background-color: #e0dacc; */
-/* background-color: #ebaa08; */
 text-align: center;
 /* max-width: 728px; */
 width: auto;
@@ -85,9 +83,6 @@ header {
 section {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* min-height: 100vh; */
-  /* background-color: #FBF6E9; */
 }
 
 main {
@@ -97,11 +92,9 @@ main {
   overflow-y: scroll;
   display: flex;
   flex-direction: column-reverse;
-
 }
 
 main::-webkit-scrollbar {
-  /* width: 0.25rem; */
   width: 0.25rem;
 }
 main::-webkit-scrollbar-track {
@@ -116,7 +109,6 @@ form {
   /* position: fixed; */
   position: absolute;
   bottom: 0;
-  /* background-color: rgb(226, 18, 18); */
   width: 100%;
   /* max-width: 728px; */
   display: flex;
@@ -128,9 +120,7 @@ form {
 }
 
 form button {
-    /* border-radius: 10% 10% 10% 10%; */
     width: 20%;
-    /* background-color: #118B50; */
     background-color: #5DB996;
     border-radius: 20px;
     align-items: center;
@@ -147,8 +137,6 @@ form input {
   width: 100%;
   font-size: 1.5rem;
   background: #E3F0AF;
-  /* color: #5DB996; */
-  /* color: rgb(49, 95, 78); */
   outline: none;
   /* border: none; */
   border-color: #5DB996;
@@ -181,11 +169,6 @@ button:disabled {
   background: white;
   max-width: 400px;
   margin: 0 auto;
-}
-
-ul, li {
-    text-align: left;
-    list-style: none;
 }
 
 /* tag style */
@@ -270,7 +253,11 @@ ul, li {
   /* justify-content: space-evenly; */
   align-items: center;
   box-sizing: border-box;
-  
+  cursor: pointer;
+}
+.ChatListObject:hover{
+  box-shadow: 0px 0px 10px 0px #000000af;
+  background-color: #118B50;
 }
 .ChatListObject div{
   text-align: right; 
@@ -289,12 +276,11 @@ ul, li {
   /* width: 200px; */
   /* max-width: 200px; */
   width: auto;
-  
-
+}
+.chatSelected{
+  background-color: #118B50;
 }
 
-
-/* tag style */
 img {
   width: 40px;
   height: 40px;
@@ -302,5 +288,4 @@ img {
   margin: 2px 5px;
 }
 
-/**/
 

@@ -3,6 +3,7 @@ import { socket } from '../utils/socket';
 import Chatbox from './chat components/Chatbox/Chatbox.jsx';
 import ChatList from './chat components/Chatlist/ChatList.jsx';
 import chatDB from "../assets/Mockedchats.js"
+import EmptyChatBox from './chat components/Chatbox/EmptyChatBox.jsx';
 export const Context = React.createContext();
 
 const chat = {
@@ -27,7 +28,8 @@ const chat = {
 const HomePage = () => {
   const [messages, setMessages] = useState([]);
   const [userMsg, setUserMsg] = useState('');
-  const [currentChat, setCurrentChat] = useState(chatDB[0]);
+  const [currentChat, setCurrentChat] = useState();
+  // const [currentChat, setCurrentChat] = useState(chatDB[0]);
   // const [currentChat, setCurrentChat] = useState(chat);
   const [chatList, setChatList] = useState(chatDB)
   const [currentUserObject, setCurrentUserObject] = useState(
@@ -52,6 +54,16 @@ const HomePage = () => {
       };
     }, [])
     
+    const selectChatHandler = (chatId)=>{
+      if(!chatId)
+        setCurrentChat()
+      if(currentChat){
+        const tempIndex = chatList.findIndex((c)=> c.chatId===currentChat.chatId)
+        chatList[tempIndex] = currentChat;
+      }
+      const chat = chatList.find((c)=> c.chatId===chatId)
+      setCurrentChat(chat)
+    }
     
     const sendMessagesToEveryone = () =>{
       if(userMsg){
@@ -64,14 +76,16 @@ const HomePage = () => {
       <Context.Provider value={currentUserObject}>
         <div className='mainChatPage'>
           <div>
-           <Chatbox currentChat={currentChat} 
-                    sendMessagesToEveryone={sendMessagesToEveryone}
-                    setUserMsg={setUserMsg}
-                    userMsg={userMsg}>
-            </Chatbox>
+            {currentChat? 
+              <Chatbox currentChat={currentChat} 
+                        sendMessagesToEveryone={sendMessagesToEveryone}
+                        setUserMsg={setUserMsg}
+                        userMsg={userMsg}>
+                </Chatbox>
+              : <EmptyChatBox></EmptyChatBox> }
           </div>
           <>
-            <ChatList chatList={chatList} ></ChatList>
+            <ChatList enetrChat={selectChatHandler} currentChat={currentChat} chatList={chatList} ></ChatList>
           </>
         </div>
       </Context.Provider>

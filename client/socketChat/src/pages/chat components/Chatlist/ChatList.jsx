@@ -3,11 +3,9 @@ import { useEffect, useState } from "react"
 import ChatListObject from "./ChatListObject"
 
 
-const ChatList = ({chatList}) => {
+const ChatList = ({currentChat,enetrChat,chatList}) => {
+// const ChatList = ({test,chatList}) => {
 
-    // useEffect(() => {
-    //     // setChatList(chatDB)
-    // }, [])
     
     return (
     <div className="chatList">
@@ -16,7 +14,13 @@ const ChatList = ({chatList}) => {
         </header>
         <main>
             {chatList.map((c)=>(
-                <ChatListObject key={c.chatId} chat={c}></ChatListObject>
+                <ChatListObject 
+                    key={c.chatId} 
+                    chat={c} 
+                    enetrChat={enetrChat}
+                    currentChat={currentChat}
+                    >
+                </ChatListObject>
             ))}
         </main>
     </div>
