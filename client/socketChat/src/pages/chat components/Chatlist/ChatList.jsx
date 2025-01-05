@@ -4,7 +4,10 @@ import ChatListObject from "./ChatListObject"
 
 
 const ChatList = ({currentChat,enetrChat,chatList}) => {
-    
+    const addChat = () =>{
+        alert('This action is still in development')
+    }
+
     return (
     <div className="chatList">
         <header >
@@ -20,6 +23,7 @@ const ChatList = ({currentChat,enetrChat,chatList}) => {
                     >
                 </ChatListObject>
             ))}
+            <button className="addBT" onClick={addChat}>+</button>
         </main>
     </div>
   )

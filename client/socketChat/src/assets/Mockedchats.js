@@ -2,7 +2,7 @@
 const chatDB = [
     {
         chatId:1,
-        chatRoomName:'final project 1',
+        chatRoomName:'private-adele-bar_amos',
         isGroup:false,
         messaagesList:[],
         Participants:[
@@ -23,27 +23,6 @@ const chatDB = [
         ]
     },
     {
-        chatId:4,
-        chatRoomName:'final project 4',
-        isGroup:false,
-        messaagesList:[],
-        Participants:[
-            {
-                id : 25,
-                userName:"Bar-amos",
-                userAvatar: '../src/assets/men logo.png',
-                email:'boby@gmail.com',
-                isFemale:'false'
-            },
-            {
-                id : 22,
-                userName:"Adele",
-                userAvatar: '../src/assets/women logo.png',
-                email:'adele@gmail.com',
-                isFemale:'true'
-            }
-        ]
-    },{
         chatId:5,
         chatRoomName:'Public group',
         isGroup:true,
@@ -71,8 +50,7 @@ const chatDB = [
                 isFemale:'false'
             }
         ]
-    },
-    
+    }
 ];
 
 export default chatDB;

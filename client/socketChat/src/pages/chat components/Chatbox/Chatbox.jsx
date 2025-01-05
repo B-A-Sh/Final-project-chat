@@ -5,7 +5,7 @@ import ChatMessage from './chatMessage.jsx';
 import { Context } from "../../HomePage"
 
 
-const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
+const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
     const currentUserObject = useContext(Context)   
     const [chatName, setChatName] = useState()
 
@@ -15,9 +15,9 @@ const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
         }
     }, [currentChat, currentUserObject]);
     
-    const sendMessage = (event) =>{
+    const submitHandler = (event) =>{
         event.preventDefault();
-        sendMessagesToEveryone();
+        sendMessage();
     }
 
     const nameFinder = () => {
@@ -26,7 +26,7 @@ const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
     };
 
     const gameInvetaion = () =>{
-        alert('this method is still in development')
+        alert('This action is still in development')
     }
      
     
@@ -41,7 +41,7 @@ const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
                             <ChatMessage key={m.messageId} messageObject={m}></ChatMessage>                        
                     ))}
                 </main>
-                <form onSubmit={sendMessage}>
+                <form onSubmit={submitHandler}>
                     <label htmlFor='inputMsg' ></label>
                     <input 
                         id='inputMsg' 

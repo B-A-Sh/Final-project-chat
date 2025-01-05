@@ -6,6 +6,7 @@ const ChatListObject = ({enetrChat,currentChat,chat}) => {
   const currentUserObject = useContext(Context)
   const [chatImage, setChatImage] = useState();
   const [chatTitle, setChatTitle] = useState();
+  // const [firstMsg, setFirstMsg] = useState(chat.messaagesList[(chat?.messaagesList.length-1)])
   const [firstMsg, setFirstMsg] = useState(chat.messaagesList[(chat?.messaagesList.length-1)])
   const [selected, setselected] = useState(false);
   useEffect(() => {

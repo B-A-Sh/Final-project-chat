@@ -43,10 +43,10 @@ const HomePage = () => {
       setCurrentChat(chat)
     }
     
-    const sendMessagesToEveryone = () =>{
+    const sendMessage = () =>{
       if(userMsg){
             const message = {currentUserObject,userMsg}
-            socket.emit("sendMessagesToEveryone",message)            
+            socket.emit("sendMessage",message,currentChat.chatRoomName)            
             setUserMsg("")
           }
     }
@@ -56,7 +56,7 @@ const HomePage = () => {
           <div>
             {currentChat? 
               <Chatbox currentChat={currentChat} 
-                        sendMessagesToEveryone={sendMessagesToEveryone}
+                        sendMessage={sendMessage}
                         setUserMsg={setUserMsg}
                         userMsg={userMsg}>
                 </Chatbox>

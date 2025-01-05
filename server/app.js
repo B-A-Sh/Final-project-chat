@@ -2,8 +2,6 @@ import express from "express";
 import cors from 'cors';
 import http from 'http'
 import { Server } from "socket.io";
-import { log } from "console";
-import { receiveMessageOnPort } from "worker_threads";
  
 const messagesHistory = [];
 const PORT = 8080;
@@ -15,9 +13,8 @@ const io = new Server(server,{
 
 //הסוקט למעשה זה מה הפרטים של המשתמש שהתחבר
 io.on("connection",(socket) => {
-    console.log("user connected");
-    console.log(socket.id);    
-    socket.on("sendMessagesToEveryone",(message)=> {
+    console.log(`user connected in socket number ${socket.id}`);
+    socket.on("sendMessage",(message,room)=> {
         const messageObject = {
             userObject: message.currentUserObject,
             messageId: Date.now(),
@@ -27,8 +24,12 @@ io.on("connection",(socket) => {
                 hour12: false}),
             content:message.userMsg
         }
-        io.emit("receiveMessage",messageObject)
-        // socket.broadcast.emit("receiveMessage",messageObject)
+        if(room){
+            socket.to(room).emit("receivePrivateMessage",messageObject)
+        }else{
+            io.emit("receiveMessage",messageObject)
+            // socket.broadcast.emit("receiveMessage",messageObject)
+        }
     })
     
 })
