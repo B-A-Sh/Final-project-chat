@@ -33,7 +33,6 @@ const ChatListObject = ({enetrChat,currentChat,chat}) => {
   
 
   return (
-    // <div className= '${className} ChatListObject'>
     <div className={`${selected? 'chatSelected':''} ChatListObject`} onClick={clickHandler}>
       <img src={currentUserObject.userAvatar} alt="chat image"></img>
       <div>

@@ -4,8 +4,6 @@ import ChatListObject from "./ChatListObject"
 
 
 const ChatList = ({currentChat,enetrChat,chatList}) => {
-// const ChatList = ({test,chatList}) => {
-
     
     return (
     <div className="chatList">
