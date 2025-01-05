@@ -21,7 +21,7 @@ const Chatbox = ({currentChat,sendMessagesToEveryone,userMsg,setUserMsg}) => {
     }
 
     const nameFinder = () => {
-        const user = currentChat.Participants.find(user => user.id !== currentUserObject.id);
+        const user = currentChat.Participants.find(user => user.id != currentUserObject.id);
         return user ? user.userName : null;
     };
 

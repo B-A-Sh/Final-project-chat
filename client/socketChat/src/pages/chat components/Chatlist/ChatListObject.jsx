@@ -8,9 +8,8 @@ const ChatListObject = ({enetrChat,currentChat,chat}) => {
   const [chatTitle, setChatTitle] = useState();
   const [firstMsg, setFirstMsg] = useState(chat.messaagesList[(chat?.messaagesList.length-1)])
   const [selected, setselected] = useState(false);
-  
   useEffect(() => {
-    setChatImage(!chat.isGroup ? avatarFinder():'../../../assets/group image.jpeg')
+    setChatImage(!chat.isGroup ? avatarFinder():'../src/assets/group image.png')
     setChatTitle(!chat.isGroup ? nameFinder(): chat.chatRoomName)
     setselected(currentChat && currentChat.chatId===chat.chatId)
   }, [currentChat])
@@ -34,7 +33,7 @@ const ChatListObject = ({enetrChat,currentChat,chat}) => {
 
   return (
     <div className={`${selected? 'chatSelected':''} ChatListObject`} onClick={clickHandler}>
-      <img src={currentUserObject.userAvatar} alt="chat image"></img>
+      <img src={chatImage} alt="chat image"></img>
       <div>
         <h6>{chatTitle}</h6>
         <p>{firstMsg || 'Empty chat'} </p>

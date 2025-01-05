@@ -23,49 +23,6 @@ const chatDB = [
         ]
     },
     {
-        chatId:2,
-        chatRoomName:'final project 2',
-        isGroup:false,
-        messaagesList:[],
-        Participants:[
-            {
-                id : 25,
-                userName:"Bar-amos",
-                userAvatar: '../src/assets/men logo.png',
-                email:'boby@gmail.com',
-                isFemale:'false'
-            },
-            {
-                id : 22,
-                userName:"Adele",
-                userAvatar: '../src/assets/women logo.png',
-                email:'adele@gmail.com',
-                isFemale:'true'
-            }
-        ]
-    },{
-        chatId:3,
-        chatRoomName:'final project 3',
-        isGroup:false,
-        messaagesList:[],
-        Participants:[
-            {
-                id : 25,
-                userName:"Bar-amos",
-                userAvatar: '../src/assets/men logo.png',
-                email:'boby@gmail.com',
-                isFemale:'false'
-            },
-            {
-                id : 22,
-                userName:"Adele",
-                userAvatar: '../src/assets/women logo.png',
-                email:'adele@gmail.com',
-                isFemale:'true'
-            }
-        ]
-    },
-    {
         chatId:4,
         chatRoomName:'final project 4',
         isGroup:false,
