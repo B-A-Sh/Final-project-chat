@@ -22,7 +22,7 @@ io.on("connection",(socket) => {
     socket.on("sendMessage",(message,room)=> {
         const messageObject = {
             userObject: message.currentUserObject,
-            +messageId: Date.now(),
+            messageId: Date.now(),
             timeSent: new Date(Date.now()).toLocaleTimeString('en-US',{
                 hour: '2-digit',
                 minute: '2-digit',
