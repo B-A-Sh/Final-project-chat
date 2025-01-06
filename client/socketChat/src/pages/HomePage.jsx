@@ -20,6 +20,7 @@ const HomePage = () => {
     });
 
     useEffect(() => {
+      
       const handleReceiveMessage = (msg)=>{
         setCurrentChat((prevChat) => ({
           ...prevChat,
@@ -30,6 +31,7 @@ const HomePage = () => {
       return () => {
         socket.off("receiveMessage", handleReceiveMessage);
       };
+      chatList.map.
     }, [])
     
     const selectChatHandler = (chatId)=>{
@@ -59,7 +61,7 @@ const HomePage = () => {
                         sendMessage={sendMessage}
                         setUserMsg={setUserMsg}
                         userMsg={userMsg}>
-                </Chatbox>
+              </Chatbox>
               : <EmptyChatBox></EmptyChatBox> }
           </div>
           <>

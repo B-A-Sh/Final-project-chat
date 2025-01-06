@@ -2,7 +2,6 @@
 const chatDB = [
     {
         chatId:1,
-        chatRoomName:'private-adele-bar_amos',
         isGroup:false,
         messaagesList:[],
         Participants:[
@@ -24,7 +23,6 @@ const chatDB = [
     },
     {
         chatId:5,
-        chatRoomName:'Public group',
         isGroup:true,
         messaagesList:[],
         Participants:[

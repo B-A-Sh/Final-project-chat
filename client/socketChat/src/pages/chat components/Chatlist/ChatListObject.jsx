@@ -11,7 +11,7 @@ const ChatListObject = ({enetrChat,currentChat,chat}) => {
   const [selected, setselected] = useState(false);
   useEffect(() => {
     setChatImage(!chat.isGroup ? avatarFinder():'../src/assets/group image.png')
-    setChatTitle(!chat.isGroup ? nameFinder(): chat.chatRoomName)
+    setChatTitle(!chat.isGroup ? nameFinder(): 'Group chat')
     setselected(currentChat && currentChat.chatId===chat.chatId)
   }, [currentChat])
 

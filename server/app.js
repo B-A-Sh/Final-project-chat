@@ -2,7 +2,8 @@ import express from "express";
 import cors from 'cors';
 import http from 'http'
 import { Server } from "socket.io";
- 
+import mongoose from "mongoose";
+
 const messagesHistory = [];
 const PORT = 8080;
 const app = express();
@@ -11,18 +12,22 @@ const io = new Server(server,{
     cors:'*'
 })
 
+
+
+
+
 //הסוקט למעשה זה מה הפרטים של המשתמש שהתחבר
 io.on("connection",(socket) => {
     console.log(`user connected in socket number ${socket.id}`);
     socket.on("sendMessage",(message,room)=> {
         const messageObject = {
             userObject: message.currentUserObject,
-            messageId: Date.now(),
+            +messageId: Date.now(),
             timeSent: new Date(Date.now()).toLocaleTimeString('en-US',{
                 hour: '2-digit',
                 minute: '2-digit',
                 hour12: false}),
-            content:message.userMsg
+            content :message.userMsg
         }
         if(room){
             socket.to(room).emit("receivePrivateMessage",messageObject)
@@ -35,10 +40,14 @@ io.on("connection",(socket) => {
 })
 
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}));
 
+mongoose.connect('').then(() => {
+  
+    emit('send user',)
+})
 server.listen(PORT,
     ()=>{
         console.log(`Listening in port ${PORT}`);
