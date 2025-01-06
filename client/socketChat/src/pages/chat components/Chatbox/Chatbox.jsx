@@ -37,7 +37,7 @@ const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
             </header>
             <section>
                 <main>
-                    {currentChat && currentChat.messaagesList.map(m =>(
+                    {currentChat && currentChat.messagesList.map(m =>(
                             <ChatMessage key={m.messageId} messageObject={m}></ChatMessage>                        
                     ))}
                 </main>

@@ -19,31 +19,33 @@ const HomePage = () => {
       isFemale:'false'
     });
 
-    useEffect(() => {
-      
-      const handleReceiveMessage = (msg)=>{
-        setCurrentChat((prevChat) => ({
-          ...prevChat,
-          messaagesList: [msg,...prevChat.messaagesList],
-        }));
-      }
-      socket.on("receiveMessage",handleReceiveMessage)
-      return () => {
-        socket.off("receiveMessage", handleReceiveMessage);
-      };
-      chatList.map.
-    }, [])
+  useEffect(() => {
     
-    const selectChatHandler = (chatId)=>{
-      if(!chatId)
-        setCurrentChat()
-      if(currentChat){
-        const tempIndex = chatList.findIndex((c)=> c.chatId===currentChat.chatId)
-        chatList[tempIndex] = currentChat;
-      }
-      const chat = chatList.find((c)=> c.chatId===chatId)
-      setCurrentChat(chat)
+    const handleReceiveMessage = (msg)=>{
+      setCurrentChat((prevChat) => ({
+        ...prevChat,
+        messagesList: [msg,...prevChat.messagesList]
+      }));
     }
+    if(currentChat)
+      socket.emit('join-room',currentChat.chatId)
+    // chatList.map((c)=>{socket.emit('join-room',c.chatId)})
+    socket.on("receiveMessage",handleReceiveMessage)
+    return () => {
+      socket.off("receiveMessage", handleReceiveMessage);
+    };
+  },[currentChat])
+
+  const selectChatHandler = (chatId)=>{
+    if(!chatId)
+      setCurrentChat()
+    if(currentChat){
+      const tempIndex = chatList.findIndex((c)=> c.chatId===currentChat.chatId)
+      chatList[tempIndex] = currentChat;
+    }
+    const chat = chatList.find((c)=> c.chatId===chatId)
+    setCurrentChat(chat)
+  }
     
     const sendMessage = () =>{
       if(userMsg){

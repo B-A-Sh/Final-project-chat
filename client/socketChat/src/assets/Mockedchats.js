@@ -3,7 +3,7 @@ const chatDB = [
     {
         chatId:1,
         isGroup:false,
-        messaagesList:[],
+        messagesList:[],
         Participants:[
             {
                 id : 25,
@@ -24,7 +24,7 @@ const chatDB = [
     {
         chatId:5,
         isGroup:true,
-        messaagesList:[],
+        messagesList:[],
         Participants:[
             {
                 id : 25,

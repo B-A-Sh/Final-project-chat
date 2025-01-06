@@ -6,13 +6,16 @@ const ChatListObject = ({enetrChat,currentChat,chat}) => {
   const currentUserObject = useContext(Context)
   const [chatImage, setChatImage] = useState();
   const [chatTitle, setChatTitle] = useState();
-  // const [firstMsg, setFirstMsg] = useState(chat.messaagesList[(chat?.messaagesList.length-1)])
-  const [firstMsg, setFirstMsg] = useState(chat.messaagesList[(chat?.messaagesList.length-1)])
-  const [selected, setselected] = useState(false);
+  // const [firstMsg, setFirstMsg] = useState(chat.messagesList[(chat?.messagesList.length-1)])
+  const [firstMsg, setFirstMsg] = useState()
+  const [selected, setSelected] = useState(false);
   useEffect(() => {
     setChatImage(!chat.isGroup ? avatarFinder():'../src/assets/group image.png')
     setChatTitle(!chat.isGroup ? nameFinder(): 'Group chat')
-    setselected(currentChat && currentChat.chatId===chat.chatId)
+    setSelected(currentChat && currentChat.chatId===chat.chatId)
+    // setFirstMsg(chat.messagesList[(chat.messagesList.length-1)])
+    setFirstMsg(currentChat?.messagesList.length>0 ? currentChat?.messagesList?.[currentChat.messagesList.length - 1] : null);
+    alert(firstMsg)
   }, [currentChat])
 
 

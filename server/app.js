@@ -3,6 +3,7 @@ import cors from 'cors';
 import http from 'http'
 import { Server } from "socket.io";
 import mongoose from "mongoose";
+import { join } from "path";
 
 const messagesHistory = [];
 const PORT = 8080;
@@ -12,11 +13,6 @@ const io = new Server(server,{
     cors:'*'
 })
 
-
-
-
-
-//הסוקט למעשה זה מה הפרטים של המשתמש שהתחבר
 io.on("connection",(socket) => {
     console.log(`user connected in socket number ${socket.id}`);
     socket.on("sendMessage",(message,room)=> {
@@ -31,11 +27,21 @@ io.on("connection",(socket) => {
         }
         if(room){
             socket.to(room).emit("receivePrivateMessage",messageObject)
-        }else{
+        }else
             io.emit("receiveMessage",messageObject)
             // socket.broadcast.emit("receiveMessage",messageObject)
-        }
+        
     })
+    socket.on('join-room',(room)=>{
+        socket.join(room)
+        console.log(`socket-- ${socket.id} added to room name -- ${room}`);
+        
+    })
+    socket.on('join-game',(gameName,chatId,currentUserObject)=>{
+        z
+
+    }
+    
     
 })
 
@@ -44,10 +50,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-mongoose.connect('').then(() => {
+// mongoose.connect('').then(() => {
   
-    emit('send user',)
-})
+//     emit('send user',)
+// })
 server.listen(PORT,
     ()=>{
         console.log(`Listening in port ${PORT}`);
