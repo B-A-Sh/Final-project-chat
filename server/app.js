@@ -37,10 +37,10 @@ io.on("connection",(socket) => {
         console.log(`socket-- ${socket.id} added to room name -- ${room}`);
         
     })
-    socket.on('join-game',(gameName,chatId,currentUserObject)=>{
-        z
+    // socket.on('join-game',(gameName,chatId,currentUserObject)=>{
+        // פה אדל שמה את הקוד שלה        
 
-    }
+    // }
     
     
 })

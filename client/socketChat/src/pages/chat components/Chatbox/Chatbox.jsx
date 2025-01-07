@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from 'react'
-import '../finalStyle.css'
+// import '../chatStyle.css'
 import ChatMessage from './chatMessage.jsx';
-import { Context } from "../../HomePage"
+import { Context } from "../../ChatHomePage.jsx"
 
 
 const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {

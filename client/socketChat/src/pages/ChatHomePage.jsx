@@ -1,10 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { socket } from '../utils/socket';
+import { socket } from '../utils/socket.js';
 import Chatbox from './chat components/Chatbox/Chatbox.jsx';
 import ChatList from './chat components/Chatlist/ChatList.jsx';
 import chatDB from "../assets/Mockedchats.js"
 import EmptyChatBox from './chat components/Chatbox/EmptyChatBox.jsx';
 export const Context = React.createContext();
+import './chat components/chatStyle.css'
+
 
 const HomePage = () => {
   const [userMsg, setUserMsg] = useState('');

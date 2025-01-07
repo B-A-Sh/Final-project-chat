@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react"
-import { Context } from "../../HomePage"
+import { Context } from "../../ChatHomePage"
 
 
 const ChatMessage = ({messageObject}) => {
