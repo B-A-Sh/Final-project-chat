@@ -267,7 +267,7 @@ button:disabled {
 .chatSelected{
   background-color: #118B50;
 }
-img {
+.chat-img {
   width: 40px;
   height: 40px;
   border-radius: 50%;

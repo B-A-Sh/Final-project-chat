@@ -10,7 +10,7 @@ const ChatMessage = ({messageObject}) => {
     return (
     <>
         <div className={`${messageClass} message `}>
-            <img src={messageObject.userObject.userAvatar} alt="avatar" className='' />    
+            <img src={messageObject.userObject.userAvatar} alt="avatar" className='chat-img' />    
             <div>{messageObject.content}
                 <p className='messageTimeStamp'>{messageObject.timeSent || "Time not available"}</p>
             </div>

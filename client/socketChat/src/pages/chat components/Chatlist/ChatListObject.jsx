@@ -46,7 +46,7 @@ const ChatListObject = ({ enetrChat, currentChat, chat }) => {
       className={`${selected ? "chatSelected" : ""} ChatListObject`}
       onClick={clickHandler}
     >
-      <img src={chatImage} alt="chat image"></img>
+      <img className="chat-img" src={chatImage} alt="chat image"></img>
       <div>
         <h6>{chatTitle}</h6>
         <p>{chat?.messagesList.length > 0
