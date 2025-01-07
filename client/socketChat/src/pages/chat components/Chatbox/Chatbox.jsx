@@ -41,7 +41,7 @@ const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
                             <ChatMessage key={m.messageId} messageObject={m}></ChatMessage>                        
                     ))}
                 </main>
-                <form onSubmit={submitHandler}>
+                <form className='form' onSubmit={submitHandler}>
                     <label htmlFor='inputMsg' ></label>
                     <input 
                         id='inputMsg' 

@@ -5,9 +5,9 @@
 
 }
 
-body {
+/* body {
   background-color: #0f3e9c;
-}
+} */
 
 .emptyChatMessage main{
   justify-content: center;
@@ -73,7 +73,8 @@ main::-webkit-scrollbar-thumb {
     background: #118B50;
 }
 
-form {
+
+.form {
   height: 7vh;
   /* position: fixed; */
   position: absolute;
@@ -88,7 +89,7 @@ form {
   padding-right: 0.5rem;
 }
 
-form button {
+.form button {
     width: 20%;
     background-color: #5DB996;
     border-radius: 20px;
@@ -96,12 +97,12 @@ form button {
     border: none;
     margin-left: 0.5rem;
 }
-form button:hover{
+.form button:hover{
   opacity: 0.8;
   background-color: #118B50;
 }
 
-form input {
+.form input {
   line-height: 1.5;
   width: 100%;
   font-size: 1.5rem;
