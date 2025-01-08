@@ -3,11 +3,13 @@ import { useContext, useEffect, useState } from 'react'
 // import '../chatStyle.css'
 import ChatMessage from './chatMessage.jsx';
 import { Context } from "../../ChatHomePage.jsx"
+import GameInventationWin from './gameInventationWin.jsx';
 
 
 const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
     const currentUserObject = useContext(Context)   
     const [chatName, setChatName] = useState()
+    const [openGameInventation, setOpenGameInventation] = useState(false)
 
     useEffect(() => {
         if (currentChat) {
@@ -25,8 +27,12 @@ const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
         return user ? user.userName : null;
     };
 
-    const gameInvetaion = () =>{
-        alert('This action is still in development')
+    const gameInvetaionHandler = () =>{
+        // לשלוח אמיט על
+        alert('game pressed')
+    }
+    const gameInvetaionWinHandler =()=>{
+        setOpenGameInventation(openGameInventation?false:true)
     }
      
     
@@ -51,10 +57,13 @@ const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
                         onChange={(e)=> {
                             setUserMsg(e.target.value)
                         }}/>
-                    <button type='button' onClick={gameInvetaion}>🎲</button>
+                    
+                    <button type='button' onClick={gameInvetaionWinHandler}>🎲</button>
                     <button type='submit'>✨</button>
                 </form>                   
+            {openGameInventation && <GameInventationWin method={gameInvetaionHandler}></GameInventationWin>}
             </section>
+            {/* {openGaneInventation? <gameInventationWin></gameInventationWin>:''} */}
         </div>
     )
 }

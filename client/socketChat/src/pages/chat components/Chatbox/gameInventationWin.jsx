@@ -1,10 +1,14 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
-
-const gameInventationWin = () => {
+const GameInventationWin = (props) => {
   return (
     <div className='gameInventationWin'>
+      {/* <div className='gameInventationWin-header'></div> */}
         <div className='gameButton'>
-            <img src="" alt="memoryGame" />
+            <img src="../src/assets/memoryGameAvatar.png" alt="memoryGame" />
+        </div>
+        <div className='gameButton'>
+            <img onClick={props.method} src="../src/assets/memoryGameAvatar.png" alt="memoryGame" />
         </div>
         
 
@@ -12,4 +16,4 @@ const gameInventationWin = () => {
   )
 }
 
-export default gameInventationWin
+export default GameInventationWin
