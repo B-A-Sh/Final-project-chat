@@ -66,7 +66,8 @@ const HomePage = () => {
                       setUserMsg={setUserMsg}
                       userMsg={userMsg}>
             </Chatbox>
-            : <EmptyChatBox></EmptyChatBox> }
+            : <EmptyChatBox></EmptyChatBox> 
+          }
         </div>
         <>
           <ChatList enetrChat={selectChatHandler} currentChat={currentChat} chatList={chatList} ></ChatList>

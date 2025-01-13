@@ -4,9 +4,12 @@ import { useContext, useEffect, useState } from 'react'
 import ChatMessage from './chatMessage.jsx';
 import { Context } from "../../ChatHomePage.jsx"
 import GameInvitationWin from './GameInvitationWin.jsx';
+import { socket } from '../../../utils/socket.js';
+import { useNavigate } from 'react-router-dom';
 
 
 const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
+    const navigate = useNavigate();
     const currentUserObject = useContext(Context)   
     const [chatName, setChatName] = useState()
     const [openGameInvitation, setOpenGameInvitation] = useState(false)
@@ -27,10 +30,14 @@ const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
         return user ? user.userName : null;
     };
 
-    const gameInvitationHandler = () =>{
-        // לשלוח אמיט על
-        alert('game pressed')
-    }
+
+    const gameInvitationHandler = (e) => {
+        console.log(e.target.id);
+        const gameName = e.target.id;
+        socket.emit('start-game', gameName);
+        // const navigate = useNavigate();
+        navigate(`/game/${gameName}`,{state: {currentUserObject,currentChat }  });
+    };
     const gameInvitationWinHandler =()=>{
         setOpenGameInvitation(openGameInvitation?false:true)
     }
