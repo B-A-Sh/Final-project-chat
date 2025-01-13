@@ -4,9 +4,11 @@ import http from 'http'
 import { Server } from "socket.io";
 import mongoose from "mongoose";
 import { join } from "path";
+import { chatSocketHandler } from "./sockets/chatSocketHandler.js";
 
 const messagesHistory = [];
-const PORT = 8080;
+let PORT = 8080;
+PORT = 8080;
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server,{
@@ -15,34 +17,8 @@ const io = new Server(server,{
 
 io.on("connection",(socket) => {
     console.log(`user connected in socket number ${socket.id}`);
-    socket.on("sendMessage",(message,room)=> {
-        const messageObject = {
-            userObject: message.currentUserObject,
-            messageId: Date.now(),
-            timeSent: new Date(Date.now()).toLocaleTimeString('en-US',{
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: false}),
-            content :message.userMsg
-        }
-        if(room){
-            socket.to(room).emit("receivePrivateMessage",messageObject)
-        }else
-            io.emit("receiveMessage",messageObject)
-            // socket.broadcast.emit("receiveMessage",messageObject)
-        
-    })
-    socket.on('join-room',(room)=>{
-        socket.join(room)
-        console.log(`socket-- ${socket.id} added to room name -- ${room}`);
-        
-    })
-    // socket.on('join-game',(gameName,chatId,currentUserObject)=>{
-        // פה אדל שמה את הקוד שלה        
 
-    // }
-    
-    
+    chatSocketHandler(io,socket)    
 })
 
 
@@ -50,15 +26,18 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-// mongoose.connect('').then(() => {
-  
-//     emit('send user',)
-// })
+
 server.listen(PORT,
     ()=>{
         console.log(`Listening in port ${PORT}`);
     }
 )
+
+// mongoose.connect('').then(() => {
+  
+//     emit('send user',)
+// })
+
     // ----
     // io.on("connection",(socket) => {
     //     console.log("user connected");

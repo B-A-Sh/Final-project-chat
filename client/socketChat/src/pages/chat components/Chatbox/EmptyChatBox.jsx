@@ -1,4 +1,3 @@
-import React from 'react'
 
 const EmptyChatBox = () => {
   
@@ -9,7 +8,7 @@ const EmptyChatBox = () => {
         <section>
             <main>
                 <div className=''>
-                    <img className='emptyChatImage' src='../src/assets/empty chat.png'></img>
+                    <img className='emptyChatImage' src='../src/assets/chat_images/empty chat.png'></img>
                     <h2>No chat has been selected</h2>
                     <div>choose a chat for start talking</div>
                 </div>

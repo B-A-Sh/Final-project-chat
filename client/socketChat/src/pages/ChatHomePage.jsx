@@ -16,7 +16,7 @@ const HomePage = () => {
       {
       id : 25,
       userName:"Bar-amos",
-      userAvatar: '../src/assets/men logo.png',
+      userAvatar: '../src/assets/chat_images/men logo.png',
       email:'boby@gmail.com',
       isFemale:'false'
     });
@@ -56,23 +56,23 @@ const HomePage = () => {
             setUserMsg("")
           }
     }
-    return (
-      <Context.Provider value={currentUserObject}>
-        <div className='mainChatPage'>
-          <div>
-            {currentChat? 
-              <Chatbox currentChat={currentChat} 
-                        sendMessage={sendMessage}
-                        setUserMsg={setUserMsg}
-                        userMsg={userMsg}>
-              </Chatbox>
-              : <EmptyChatBox></EmptyChatBox> }
-          </div>
-          <>
-            <ChatList enetrChat={selectChatHandler} currentChat={currentChat} chatList={chatList} ></ChatList>
-          </>
+  return (
+    <Context.Provider value={currentUserObject}>
+      <div className='mainChatPage'>
+        <div>
+          {currentChat? 
+            <Chatbox currentChat={currentChat} 
+                      sendMessage={sendMessage}
+                      setUserMsg={setUserMsg}
+                      userMsg={userMsg}>
+            </Chatbox>
+            : <EmptyChatBox></EmptyChatBox> }
         </div>
-      </Context.Provider>
+        <>
+          <ChatList enetrChat={selectChatHandler} currentChat={currentChat} chatList={chatList} ></ChatList>
+        </>
+      </div>
+    </Context.Provider>
   )
 }
 export default HomePage

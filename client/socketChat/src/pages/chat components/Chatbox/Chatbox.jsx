@@ -3,13 +3,13 @@ import { useContext, useEffect, useState } from 'react'
 // import '../chatStyle.css'
 import ChatMessage from './chatMessage.jsx';
 import { Context } from "../../ChatHomePage.jsx"
-import GameInventationWin from './gameInventationWin.jsx';
+import GameInvitationWin from './GameInvitationWin.jsx';
 
 
 const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
     const currentUserObject = useContext(Context)   
     const [chatName, setChatName] = useState()
-    const [openGameInventation, setOpenGameInventation] = useState(false)
+    const [openGameInvitation, setOpenGameInvitation] = useState(false)
 
     useEffect(() => {
         if (currentChat) {
@@ -27,19 +27,19 @@ const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
         return user ? user.userName : null;
     };
 
-    const gameInvetaionHandler = () =>{
+    const gameInvitationHandler = () =>{
         // לשלוח אמיט על
         alert('game pressed')
     }
-    const gameInvetaionWinHandler =()=>{
-        setOpenGameInventation(openGameInventation?false:true)
+    const gameInvitationWinHandler =()=>{
+        setOpenGameInvitation(openGameInvitation?false:true)
     }
      
     
     return (
         <div className='chatbox'>
             <header>
-                <h1>{chatName || "defult"}</h1>
+                <h1>{chatName || "default"}</h1>
             </header>
             <section>
                 <main>
@@ -58,12 +58,12 @@ const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
                             setUserMsg(e.target.value)
                         }}/>
                     
-                    <button type='button' onClick={gameInvetaionWinHandler}>🎲</button>
+                    <button type='button' onClick={gameInvitationWinHandler}>🎲</button>
                     <button type='submit'>✨</button>
                 </form>                   
-            {openGameInventation && <GameInventationWin method={gameInvetaionHandler}></GameInventationWin>}
+            {openGameInvitation && <GameInvitationWin method={gameInvitationHandler}></GameInvitationWin>}
             </section>
-            {/* {openGaneInventation? <gameInventationWin></gameInventationWin>:''} */}
+            {/* {openGameInVitation? <gameInvitationWin></gameInvitationWin>:''} */}
         </div>
     )
 }
