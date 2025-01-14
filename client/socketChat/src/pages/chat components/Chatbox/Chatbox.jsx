@@ -32,7 +32,6 @@ const Chatbox = ({currentChat,sendMessage,userMsg,setUserMsg}) => {
 
 
     const gameInvitationHandler = (e) => {
-        console.log(e.target.id);
         const gameName = e.target.id;
         socket.emit('start-game', gameName);
         // const navigate = useNavigate();

@@ -14,7 +14,8 @@ const HomePage = () => {
   const [chatList, setChatList] = useState(chatDB)
   const [currentUserObject, setCurrentUserObject] = useState(
       {
-      id : 25,
+      id : Date.now(),
+      // id : 25,
       userName:"Bar-amos",
       userAvatar: '../src/assets/chat_images/men logo.png',
       email:'boby@gmail.com',

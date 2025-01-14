@@ -1,18 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './RPS-style.css'
 import { socket } from '../../utils/socket'
 import OptionPanel from './OptionPanel'
-//mocking staff until merging
-// import chat from '../../assets/Mockedchat.js'
 import GameResult from './gameResult.jsx'
-import { useLocation } from 'react-router-dom'
-// import { Context } from "../../ChatHomePage";
+import { useNavigate, useLocation } from 'react-router-dom'
 
-
-// const RockPaperScissorsMain = ({gameMode,chat}) => {
 const RockPaperScissorsMain = ({gameMode}) => {
-    
+    const navigate = useNavigate()
     const enemyHands = ['../src/assets/RPS-game images/hands-images/hand-rock-left.png',
                         '../src/assets/RPS-game images/hands-images/hand-paper-left.png',
                         '../src/assets/RPS-game images/hands-images/hand-scissors-left.png',
@@ -28,10 +23,8 @@ const RockPaperScissorsMain = ({gameMode}) => {
     const [disableButtons, setDisableButtons] = useState(false)
     const [gameOver, setGameOver] = useState()
     const [victory, setVictory] = useState()
-    // const chat = useLocation().state?.chat || {}
     const {state}=useLocation()
     const {currentUserObject,currentChat} = state;
-    // const chat = state?.chat || {}
 
     //------- take care in merging stage
     const roomId = currentChat.chatId
@@ -41,14 +34,12 @@ const RockPaperScissorsMain = ({gameMode}) => {
 
     useEffect(() => {
         if(gameMode==='multi'){
-            socket.emit('join-room',roomId)
             socket.on('enemyHand', (hand)=>{
-                console.log('enemyHand',hand);
-                
+                console.log('Enemy played, the enemyHand is -',hand);  
                 if(!gameOver){
                     setEnemyHand(hand);
                     setIsWaiting(false);
-                    // setGameOver(true)
+                    setGameOver(true)
                 }
             })
             socket.on("handsState", (hands)=>{
@@ -67,27 +58,27 @@ const RockPaperScissorsMain = ({gameMode}) => {
                 }else if(victory!==currentUserId){
                     setVictory(2)
                 }
-                console.log('victory',victory);
-                
+                console.log('Game result emitted,the victory result is - ',victory);
                 setGameOver(true)
             })
+            socket.emit('join-room',roomId)
         }
-
         return () => {
-            // socket.off('enemyHand')
+            socket.off('enemyHand')
         }
     }, [socket,reloaderIndicator])
     
-
+    const returnToChat = ()=>{
+        navigate(`/`);
+    }
     const clickHandler = (e)=>{
         if(e){
             setPlayerHand(e.target.dataset.hand)
             if(gameMode==='single'){
-                // const randomHand = Math.floor(Math.random() * enemyHands.length);
-                // setEnemyHand(randomHand);
-                setEnemyHand(0);
+                const randomHand = Math.floor(Math.random() * 3);
+                setEnemyHand(randomHand);
                 // setTimeout(() => {screenWinner(playerHand, enemyHand)},5);
-                setReloadIndicator(reloaderIndicator+1)
+                // setReloadIndicator(reloaderIndicator+1)
             }else if(gameMode==='multi'){
                 socket.emit('playerHand', {userId: currentUserId, hand: e.target.dataset.hand})
                 setDisableButtons(true)
@@ -95,12 +86,11 @@ const RockPaperScissorsMain = ({gameMode}) => {
         }
     }
     const playAgainClickHandler = ()=>{
-        setPlayerHand(0)
+        setPlayerHand(3)
         if(gameMode==='multi'){
             setIsWaiting(true)
-        }else{
-            setEnemyHand(0)
         }
+        setEnemyHand(3)
         setGameOver(false)
         setDisableButtons(false)
     }
@@ -109,22 +99,26 @@ const RockPaperScissorsMain = ({gameMode}) => {
     <div className='RockPaperScissorsMain'>
         <div className='board-game-PRS'>
             {gameMode==='multi'&& isWaiting? 
-            <div>
-                <svg className="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                    <circle className="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-                </svg>
-                {/* <h1>Waiting for the other player to choose</h1> */}
-            </div>:
-            <div>
-                <img src={enemyHands[enemyHand]} alt="enemyHand" />
-            </div>}
+                <div>
+                    <svg className="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle className="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                    {/* <h1>Waiting for the other player to choose</h1> */}
+                </div>:
+                <div>
+                    <img src={enemyHands[enemyHand]} alt="enemyHand" />
+                </div>
+            }
             <br />
             <div>
                 <img src={playerHands[playerHand]} alt="playerHand" />
             </div>
             <div className="cs-player">
                 {gameOver?
-                    <GameResult victoryState={victory} playAgainClickHandler={playAgainClickHandler} />
+                    <GameResult 
+                        victoryState={victory} 
+                        playAgainClickHandler={playAgainClickHandler}
+                        returnToChat={returnToChat} />
                 :
                     <OptionPanel clickHandler={disableButtons? null: clickHandler} />}
             </div>

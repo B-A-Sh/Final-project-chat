@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 
-const GameResult = ({ victoryState, playAgainClickHandler }) => {
+const GameResult = ({ victoryState, playAgainClickHandler,returnToChat }) => {
     let result
     console.log('victoryState', victoryState);
     console.log(`from the game result this is the victoryState ${victoryState}`);
@@ -14,6 +14,8 @@ const GameResult = ({ victoryState, playAgainClickHandler }) => {
                     <img className='gameResultImage' src="../src/assets/RPS-game images/score-tie.png" alt="gameResult" />
                     <h1>🤝️Its a tie🤝️</h1>
                     <button className='again-button' onClick={playAgainClickHandler}>🔄️play again🔄️</button>
+                    <button className='again-button' onClick={returnToChat} >🔙️return to chat🔙️</button>
+
                 </>
             )
             break;
@@ -23,6 +25,7 @@ const GameResult = ({ victoryState, playAgainClickHandler }) => {
                     <img className='gameResultImage' src="../src/assets/RPS-game images/wining-images/winner-avatar-4.png" alt="gameResult" />
                     <h1>🎉️You win🎉️</h1>
                     <button className='again-button' onClick={playAgainClickHandler}>🔄️play again🔄️</button>
+                    <button className='again-button' onClick={returnToChat} >🔙️return to chat🔙️</button>
                 </>
             )
             break;
@@ -32,6 +35,7 @@ const GameResult = ({ victoryState, playAgainClickHandler }) => {
                     <img className='gameResultImage' src="../src/assets/RPS-game images/defeat-images/defeat-4.png" alt="gameResult" />
                     <h1>😞️You lose😞️</h1>
                     <button className='again-button' onClick={playAgainClickHandler}>🔄️play again🔄️</button>
+                    <button className='again-button' onClick={returnToChat} >🔙️return to chat🔙️</button>
                 </>
             )
             break;
@@ -40,7 +44,7 @@ const GameResult = ({ victoryState, playAgainClickHandler }) => {
     }
 
     return (
-        <div>
+        <div className='gameResult'>
             {result}
         </div>
     )
